@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63abdba7-266c-46a5-96d5-912a95078c1f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/eslint.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/eslint.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +28,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "test-pr",
     "js.buildTools.grunt.grunt-cli.package": "",
     "js.buildTools.gulp.gulp_package_dir": "",
     "last_opened_file_path": "/Users/ogreeni/Desktop/code/hack4impact/CCA-frontend",
@@ -74,7 +74,7 @@
       <updated>1695156745867</updated>
       <workItem from="1695156747297" duration="579000" />
       <workItem from="1695157402038" duration="227000" />
-      <workItem from="1695157636594" duration="1551000" />
+      <workItem from="1695157636594" duration="1603000" />
     </task>
     <servers />
   </component>
