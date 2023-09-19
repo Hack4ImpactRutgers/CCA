@@ -2,13 +2,13 @@
 
 ## Getting Started
 
-First, install `pnpm`:
+If it is not already installed on your machine, install [`pnpm`](https://pnpm.io/):
 
 ```bash
 npm install -g pnpm
 ```
 
-Then, install project dependencies:
+Then, install dependencies:
 ```bash
 pnpm install
 ```
