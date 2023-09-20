@@ -1,13 +1,14 @@
-name: eslint
+# This workflow builds the app, runs ESLint, and checks for TypeScript compilation errors.
+name: CI
 on: push
 jobs:
-  build:
+  build-lint-tsc:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [18]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2
         with:
           version: 8
@@ -20,3 +21,5 @@ jobs:
         run: pnpm install
       - name: Run ESLint
         run: pnpm lint
+      - name: Run TypeScript compiler
+        run: pnpm tsc --noEmit
