@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&family=Montserrat:wght@400;700&display=swap');
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -8,9 +9,12 @@
   --background-end-rgb: 245, 245, 245;
 
   /* Using these colors, unsure of which order tho */
-  --primary: #003852;
-  --secondary: #00B5C2;
-  --tertiary: #ABCF38;
+  --primary-color: #003852;
+  --secondary-color: #00B5C2;
+  --tertiary-color: #ABCF38;
+
+  --primary-font: 'Montserrat', sans-serif;
+  --secondary-font: 'Roboto', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,6 +26,7 @@
 }
 
 body {
+  font-family: var(--primary-font);
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
