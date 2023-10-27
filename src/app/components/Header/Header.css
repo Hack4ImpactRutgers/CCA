@@ -1,0 +1,49 @@
+.bar {
+   
+    background: var(--primary-color);
+    text-decoration: none;
+}
+
+.bar ul {
+
+    padding: 0;
+    margin-top: 0;
+    height: 5rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+  }
+
+  .routes:first-child{
+      margin-left: .5rem;
+  }
+
+  
+.routes * {
+ 
+    font-size: large;
+      text-decoration: none;
+      color: rgb(255, 255, 255);
+  }
+  .routes *:hover{
+      background-color: var(--secondary-color);
+  }
+
+  .routes :last-child{
+    margin-left: auto;
+    margin-right: 20px;
+  }
+
+  
+.active {
+   color: var(--tertiary-color);
+    font-weight: bold;
+ }
+
+  
+
+  
+ 
+  
