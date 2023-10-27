@@ -1,10 +1,11 @@
-import Head from 'next/head'
-import Image from 'next/image'
+"use client"
+import {useState} from 'react';
+import TextInput from "@/app/components/TextInput";
 
 export default function Home() {
+  const [textInput, setTextInput] = useState("");
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      [placeholder]
-    </main>
+    <TextInput placeholder={"awdad"} value={textInput} onChange={setTextInput} />
   )
 }
