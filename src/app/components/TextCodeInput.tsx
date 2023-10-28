@@ -13,7 +13,7 @@ export default function TextCodeInput(props: TextCodeInputProps) {
     const [code, setCode] = useState<string[]>(Array(codeLength).fill(""));
     const inputs = useRef<HTMLInputElement[]>([]);
 
-    // Auto focus the first input when the component is mounted
+    // Autofocus the first input when the component is mounted
     useEffect(() => {
         inputs.current[0].focus();
     }, []);
@@ -28,7 +28,7 @@ export default function TextCodeInput(props: TextCodeInputProps) {
     }
 
     /**
-     * Handles user input into the code input fields. 
+     * Handles user input into the code input fields.
      * @param e [React.KeyboardEvent<HTMLInputElement>]
      */
     function onCodeChange(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -45,7 +45,7 @@ export default function TextCodeInput(props: TextCodeInputProps) {
         // If user types a number, add it to the code and go to the next input, if possible
         else if (!isNaN(parseInt(e.key)) && e.currentTarget.tabIndex < codeLength ) {
             newCode[e.currentTarget.tabIndex] = e.key;
-            if (e.currentTarget.tabIndex < codeLength - 1) 
+            if (e.currentTarget.tabIndex < codeLength - 1)
                 inputs.current[e.currentTarget.tabIndex + 1].focus();
         }
         // If code is complete, submit it (you can remove this if you want to submit the code when the user clicks a button instead)
