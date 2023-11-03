@@ -1,20 +1,38 @@
 import React from 'react'
-import { NavLink } from '../../../../node_modules/react-router-dom/dist/index'
-import "./Header.css"
+
 
 
 export default function Header() {
+  const pathname = usePathname()
   return (
-    <nav className='bar'>
+    <nav className='bg-[var(--primary-color)] no-underline'>
         
-        <ul className='routes'>
-            <img src="../../favicon.ico"/>
+        <ul className='p-0 mt-0 h-20 [list-style:none] flex items-center gap-4'>
+            <img className='ml-[.5rem] text-[large] no-underline text-[rgb(255,_255,_255)]' src="../../favicon.ico"/>
             
-            <NavLink to="/volunteer">Volunteer</NavLink>
-            <NavLink  to="/client">Client</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
-      
-            <NavLink to="/login">Sign In</NavLink>
+            <Link className={`text-[large] no-underline text-[rgb(255,_255,_255)] hover:bg-[var(--secondary-color)] ${
+                  pathname=='volunteer'
+                    ? "text-[var(--tertiary-color)] font-bold"
+                    : ""
+                }`} href="/volunteer">Volunteer</Link>
+
+                
+              <Link className={`text-[large] no-underline text-[rgb(255,_255,_255)] hover:bg-[var(--secondary-color)] ${
+                  pathname=='client'
+                    ? "text-[var(--tertiary-color)] font-bold"
+                    : ""
+                }`} href="/client">Client</Link>
+            <Link className={`text-[large] no-underline text-[rgb(255,_255,_255)] hover:bg-[var(--secondary-color)] ${
+                  pathname=='contact'
+                    ? "text-[var(--tertiary-color)] font-bold"
+                    : ""
+                }`} href="/Contact">Contact</Link>
+            <Link className={`ml-auto mr-[20px] text-[large] no-underline text-[rgb(255,_255,_255)] hover:bg-[var(--secondary-color)] ${
+                  pathname=='volunteer'
+                    ? "text-[var(--tertiary-color)] font-bold"
+                    : ""
+                }`} href="/login">Sign In</Link>
+
         </ul>
 
     </nav>
