@@ -26,7 +26,7 @@ export default function CollapsibleContent(props: CollapsibleContentProps) {
           />
         </button>
       </div>
-      <div>{props.content}</div>
+      <div>{(isCollapsed==false) && props.content}</div>
     </div>
   );
 }

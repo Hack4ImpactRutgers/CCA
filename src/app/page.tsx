@@ -61,9 +61,12 @@ export default function Home() {
         </div>
         {/* TODO: add icons */}
       </section>
-      <section>
-        Eligibility
-        <CollapsibleContent title={"awdwad"} content={"awdawd"} />
+      <section className="space-y-2 > * + *">
+       <h1 className="text-primary text-5xl font-bold"> Eligibility </h1>
+        <CollapsibleContent title={"Congregate Meals"} content={"Persons must be 60 years of age or older, or the spouse (regardless of age) or an eligible client. Disabled persons under 60, who lives with an eligible client, or lives in within the housing authority we serve, may come to the site with the client and eat."} />
+        <CollapsibleContent title={"Home Delivered Meals"} content={"Persons must be 60 years of age or older and be home bound (unable to drive) and be unable to leave home without assistance and not have help in the home with cooking of noon meals. Disabled persons under 60 who are on Medicaid may be eligible to receive meals."} />
+        <CollapsibleContent title={"Cost of Meals"} content={"The cost of a meal is a voluntary donation of $2.00. If a person is unable to give the full contribution, they may give what they can afford and will not be denied a meal. All meals are cooked and prepared by Valley Services inc. in Austin, Texas. Hot food is transported in insulated food containers by company vans to the 20 sites: For eligibility and availability, please call Noelia Buck, Senior Nutrition Program Director at (800) 333-6325 or (979)540- it cuts off there"} />
+
       </section>
     </>
   );
