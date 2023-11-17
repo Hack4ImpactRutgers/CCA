@@ -7,10 +7,10 @@ export default function Header() {
   const pathname = usePathname()
 
   return (
-    <nav className='bg-[var(--primary-color)] no-underline'>
+    <nav className='font-primary bg-[var(--primary-color)] no-underline'>
 
         <ul className='p-0 mt-0 h-20 [list-style:none] flex items-center gap-4'>
-            <img className='ml-[.5rem] text-[large] no-underline text-[rgb(255,_255,_255)]' src="../../favicon.ico"/>
+            <img className='ml-[.5rem] text-[large] no-underline text-[rgb(255,_255,_255)]' src="/images/animals-48x48.png"/>
 
             <Link className={`text-[large] no-underline text-[rgb(255,_255,_255)] hover:bg-[var(--secondary-color)] ${
                   pathname=='volunteer'
@@ -28,7 +28,7 @@ export default function Header() {
                     ? "text-[var(--tertiary-color)] font-bold"
                     : ""
                 }`} href="/Contact">Contact</Link>
-            <Link className={`ml-auto mr-[20px] text-[large] no-underline text-[rgb(255,_255,_255)] hover:bg-[var(--secondary-color)] ${
+            <Link className={`font-secondary ml-auto mr-[20px] text-[large] no-underline text-[rgb(255,_255,_255)] hover:bg-[var(--secondary-color)] ${
                   pathname=='volunteer'
                     ? "text-[var(--tertiary-color)] font-bold"
                     : ""
