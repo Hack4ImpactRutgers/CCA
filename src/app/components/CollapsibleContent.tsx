@@ -13,7 +13,7 @@ export default function CollapsibleContent(props: CollapsibleContentProps) {
   return (
     <div>
       <div className="h-[73px] bg-secondary flex justify-between items-center">
-        <div className="text-white text-3xl">{props.title}</div>
+        <div className="text-white text-2xl font-bold">{props.title}</div>
         <button onClick={() => setIsCollapsed(!isCollapsed)}>
           <Image
             className={`transition-transform ${
@@ -26,7 +26,14 @@ export default function CollapsibleContent(props: CollapsibleContentProps) {
           />
         </button>
       </div>
-      <div>{props.content}</div>
+      <div
+        // TODO: fix this transition.
+        className={`duration-500 overflow-hidden transition-all ${
+          isCollapsed ? "h-0" : "h-auto"
+        }`}
+      >
+        {props.content}
+      </div>
     </div>
   );
 }
