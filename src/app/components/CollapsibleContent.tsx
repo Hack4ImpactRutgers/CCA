@@ -29,7 +29,7 @@ export default function CollapsibleContent(props: CollapsibleContentProps) {
       <div
         // TODO: fix this transition.
         className={`duration-500 overflow-hidden transition-all ${
-          isCollapsed ? "h-0" : "h-auto"
+          isCollapsed && "hidden"
         }`}
       >
         {props.content}
