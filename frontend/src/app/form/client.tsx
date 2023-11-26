@@ -19,6 +19,7 @@ interface ClientProps {
   setZip: Dispatch<SetStateAction<string>>;
   setPhone: Dispatch<SetStateAction<string>>;
   setInstructions: Dispatch<SetStateAction<string>>;
+  setFormPage: Dispatch<SetStateAction<string>>;
 }
 
 
@@ -73,8 +74,8 @@ function Client(props: ClientProps) {
           </div>
           <TextInput value={props.instructions || ''} placeholder={''} onChange={props.setInstructions }/>
    
-        <div className='mt-5 text-right'>
-          <Button text={'Continue'}/>
+          <div onClick={()=>props.setFormPage("Pet1")} className='mt-5 text-right'>
+          <Button text="Continue"/>
           </div>
     </form>
   )
