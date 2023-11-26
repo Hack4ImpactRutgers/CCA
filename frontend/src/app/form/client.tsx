@@ -1,6 +1,7 @@
 "use client"
 
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import Button from '../components/Button'
 import TextInput from '../components/TextInput'
 
 interface ClientProps {
@@ -72,6 +73,9 @@ function Client(props: ClientProps) {
           </div>
           <TextInput value={props.instructions || ''} placeholder={''} onChange={props.setInstructions }/>
    
+        <div className='mt-5 text-right'>
+          <Button text={'Continue'}/>
+          </div>
     </form>
   )
 }
