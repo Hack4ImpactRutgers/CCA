@@ -11,7 +11,6 @@ import LoginPage from "@/app/loginPage"
 export default function Home() {
   return (
     <div className="flex flex-col gap-14 leading-10">
-      <LoginButton text="hello" onClick={LoginPage} active={true}/>
       <section className="h-[515px] w-full relative">
         <Image
           src="/images/animals.jpeg"
