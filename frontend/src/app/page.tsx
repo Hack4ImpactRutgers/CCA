@@ -5,11 +5,13 @@ import CollapsibleContent from "@/app/components/CollapsibleContent";
 import LoginButton from "@/app/components/LoginButton";
 import { useState } from "react";
 import SectionTitle from "@/app/components/SectionTitle";
+import LoginPage from "@/app/loginPage"
 
 // TODO: add HTML semantic elements.
 export default function Home() {
   return (
     <div className="flex flex-col gap-14 leading-10">
+      <LoginButton text="hello" onClick={LoginPage} active={true}/>
       <section className="h-[515px] w-full relative">
         <Image
           src="/images/animals.jpeg"
@@ -84,10 +86,10 @@ export default function Home() {
         />
       </section>
 
-      {/* TODO: Instagram API support. */}
+      {/* TODO: Instagram API support.*/ }
       <section className="p-10">
         <SectionTitle text="Connect with CCA on Instagram" />
       </section>
     </div>
   );
-}
+} 

@@ -6,8 +6,8 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 245, 245, 245;
-  --background-end-rgb: 245, 245, 245;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
 
   /* Using these colors, unsure of which order tho */
   --primary-color: #003852;
@@ -16,6 +16,9 @@
 
   --primary-font: 'Montserrat', sans-serif;
   --secondary-font: 'Roboto', sans-serif;
+
+  height:100%;
+  width:100%
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,4 +38,69 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    height:100%;
+    width:100%
+}
+
+#mainComps{
+  border-color:#003852;
+  width:fit-content;
+  height:600px;
+  margin:auto;
+  margin-top:7%;
+}
+
+#fullPage{
+  width:max-content;
+  height:100%;
+  width:100%
+}
+
+#header{
+  height:10%;
+  background-color:#003852;
+}
+
+#admvol{
+  margin:auto;
+  height:fit-content;
+  width: fit-content;
+}
+
+#image{
+  height:239px;
+  width: 239px;
+  margin:auto;
+}
+
+h1{
+  font-weight:bold;
+  font-family: 'Roboto';
+  font-size: 25px;
+  text-align: center;
+  margin-top:2%;
+  margin-bottom:2%;
+}
+
+#txtInput{
+  width:fit-content;
+  margin:auto;
+  margin-top: 4%;
+  margin-bottom:4%;
+}
+
+#forPass{
+  font-weight:bold;
+  font-family: 'Roboto';
+  font-size: 13px;
+  margin:auto;
+  text-align: center;
+  padding-bottom: 3%;
+  color: #00B5C2;
+}
+
+#logButton{
+  margin:auto;
+  height:fit-content;
+  width:fit-content;
 }

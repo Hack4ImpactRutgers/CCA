@@ -12,7 +12,7 @@ export default function LoginButton(props: LoginButtonProps) {
   return (
     <button
       onClick={onClick}
-      className={`transition-colors w-[120px] font-semibold ${
+      className={`transition-colors w-[120px] font-semibold hover:bg-secondary hover:text-white ${
         active && "text-secondary"
       }`}
     >

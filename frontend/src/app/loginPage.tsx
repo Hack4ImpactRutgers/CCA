@@ -3,10 +3,23 @@ import './globals.css'
 import {useState} from 'react';
 import TextInput from "@/app/components/TextInput";
 import Button from "@/app/components/Button";
+import LoginButton from "@/app/components/LoginButton";
+import Header from './components/Header';
+import Image from 'next/image';
+import image1 from '/public/svg/image1.png';
 
-export default function Home() {
+
+
+export default function LoginPage() {
   const [textInput, setTextInput] = useState("");
-  
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleAdminClick = (): void =>{
+    setSelectedOption("admin");
+  }
+  const handleVolunteerClick = (): void =>{
+    setSelectedOption("volunteer");
+  }
 
   return (
     <div id="fullPage">
@@ -15,25 +28,54 @@ export default function Home() {
       <Button text={"awdad"}></Button>
       */}
       <div id="header">
-        will be the header
+        <Header/>
       </div>
 
 
       <div id="mainComps">
         <div id="admvol">
-          <div id="admVolButton"></div>
-          <div id="admVolButton"></div>
+
+
+          <div style={{width: "fit-content", height:"fit-content", float:"left", margin:"auto", marginRight:"20px"}}>
+            <LoginButton text={'Admin'} onClick={handleAdminClick} active={true}/>
+          </div>
+
+          <div style={{width: "fit-content", height:"fit-content", float:"left", margin:"auto"}}>
+            <LoginButton text={'Volunteer'} onClick={handleVolunteerClick} active={true}/>
+          </div>
+
+          
         </div>
-        <div id="image">
-          <img src="image.png" alt="image"/>
+        <div style={{height:"fit-content", width:"100%", float:"left"}}>
+          <div id="image">
+            <Image src={image1} alt="image" layout="responsive" width={300} height={300} />
+          </div>
         </div>
-        <div><h1>Account Login</h1></div>
-        <div id="txtInput">
-          <TextInput placeholder={"Username"} value={textInput} onChange={setTextInput}/>
-        </div>
-        <div id="txtInput">
-          <TextInput placeholder={"Password"} value={textInput} onChange={setTextInput}/>
-        </div>
+
+        {selectedOption === "admin" && (
+          <div id="adminContent">
+            {/* Content specific to the Admin option */}
+            <div style={{margin: 'auto', height:"fit-content", width:"fit-content"}}><h1>Account Login</h1></div>
+              <div style={{width:'fit-content', margin:'auto', marginTop:'4%', marginBottom:'4%'}} id="userInput">
+                <TextInput placeholder={"Username"} value={textInput} onChange={setTextInput}/>
+              </div>
+              <div style={{width:'fit-content', margin:'auto', marginTop:'4%', marginBottom:'4%'}} id="passwordInput">
+                <TextInput placeholder={"Password"} value={textInput} onChange={setTextInput}/>
+            </div>
+          </div>
+        )}
+
+        {selectedOption === "volunteer" && (
+          <div id="volunteerContent">
+            {/* Content specific to the Volunteer option */}
+            <div style={{margin: 'auto', height:"fit-content", width:"fit-content"}}><h1>Account Login</h1></div>
+              <div style={{width:'fit-content', margin:'auto', marginTop:'4%', marginBottom:'4%'}} id="passwordInput">
+                <TextInput placeholder={"Password"} value={textInput} onChange={setTextInput}/>
+            </div>
+          </div>
+        )}
+
+        
         <div id="forPass">
           Forgot Username or Password?
         </div>
