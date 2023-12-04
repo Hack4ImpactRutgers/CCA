@@ -5,6 +5,8 @@ import CollapsibleContent from "@/app/components/CollapsibleContent";
 import LoginButton from "@/app/components/LoginButton";
 import { useState } from "react";
 import SectionTitle from "@/app/components/SectionTitle";
+import InfoCard from "./components/homepage/InfoCard";
+import Button from "./components/Button";
 
 // TODO: add HTML semantic elements.
 export default function Home() {
@@ -38,15 +40,20 @@ export default function Home() {
         <div className="text-white text-5xl font-bold text-center">
           We Provide
         </div>
-        {/* TODO: add icons */}
+        <div className="flex justify-center gap-12 mt-10">
+          <InfoCard title="Pet Food" icon="streamline:nature-ecology-bone-pet-dog-bone-food-snack" />
+          <InfoCard title="Pet Supplies" icon="tennis-ball" />
+          <InfoCard title="Pet Medical Services" icon="med-services" />
+        </div>
       </section>
       <section className="flex justify-between p-10">
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-between">
           <SectionTitle text={"Volunteers Change Lives"} />
           <p className="text-2xl leading-10">
             It is simple to volunteer with us in a role that is <br /> right for
             you.
           </p>
+          <Button text="Contact Us" />
         </div>
         <div className="w-[509px] h-[289px] relative">
           <Image
@@ -57,16 +64,23 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="h-[388px] bg-tertiary p-10">
-        <div className="text-4xl text-primary font-bold">
-          Joining Us Is Easy
+      <section className="h-[388px] bg-tertiary p-10 flex justify-between">
+        <div className="flex flex-col justify-around h-full">
+          <div className="text-4xl text-primary font-bold">
+            Joining Us Is Easy
+          </div>
+          <p className="text-xl leading-10">
+            Receive the pet products and <br /> support you need right from your
+            <br />
+            door step.
+          </p>
+          <Button text="Learn More" />
         </div>
-        <p className="text-xl leading-10">
-          Receive the pet products and <br /> support you need right from your
-          <br />
-          door step.
-        </p>
-        {/* TODO: add icons */}
+        <div className="flex justify-center gap-6 me-[105px] mt-4">
+          <InfoCard icon="gg:check-o" title="1. Eligibility" description="See if you qualify to receive our services" />
+          <InfoCard icon="ant-design:form-outlined" title="2. Register" description="Fill out our Program Interest Form" />
+          <InfoCard icon="bi:box-fill" title="3. Connect" description="Get Connected with AniMeals Services" />
+        </div>
       </section>
       <section className="pv-10 flex gap-5 flex-col">
         <SectionTitle text="Eligibility" />
@@ -86,7 +100,10 @@ export default function Home() {
 
       {/* TODO: Instagram API support. */}
       <section className="p-10">
-        <SectionTitle text="Connect with CCA on Instagram" />
+        <div className="flex justify-between">
+          <SectionTitle text="Connect with CCA on Instagram" />
+          <Button text="Follow Us" icon="instagramlogo.png" />
+        </div>
       </section>
     </div>
   );
