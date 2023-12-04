@@ -1,5 +1,5 @@
 # This workflow builds the app, runs ESLint, and checks for TypeScript compilation errors.
-name: CI
+name: Frontend-CI
 on: push
 jobs:
   build-lint-tsc:
@@ -19,7 +19,10 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
+        working-directory: ./frontend
       - name: Run ESLint
         run: pnpm lint
+        working-directory: ./frontend
       - name: Run TypeScript compiler
         run: pnpm tsc --noEmit
+        working-directory: ./frontend
