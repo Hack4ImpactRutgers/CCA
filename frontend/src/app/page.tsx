@@ -7,11 +7,14 @@ import { useState } from "react";
 import SectionTitle from "@/app/components/SectionTitle";
 import InfoCard from "./components/homepage/InfoCard";
 import Button from "./components/Button";
+import Checkbox from "@/app/components/Checkbox";
+import RadioButton from "@/app/components/RadioButton";
 
 // TODO: add HTML semantic elements.
 export default function Home() {
   return (
     <div className="flex flex-col gap-14 leading-10">
+      <RadioButton value={"awd"} />
       <section className="h-[515px] w-full relative">
         <Image
           src="/images/animals.jpeg"
@@ -41,7 +44,10 @@ export default function Home() {
           We Provide
         </div>
         <div className="flex justify-center gap-12 mt-10">
-          <InfoCard title="Pet Food" icon="streamline:nature-ecology-bone-pet-dog-bone-food-snack" />
+          <InfoCard
+            title="Pet Food"
+            icon="streamline:nature-ecology-bone-pet-dog-bone-food-snack"
+          />
           <InfoCard title="Pet Supplies" icon="tennis-ball" />
           <InfoCard title="Pet Medical Services" icon="med-services" />
         </div>
@@ -77,9 +83,21 @@ export default function Home() {
           <Button text="Learn More" />
         </div>
         <div className="flex justify-center gap-6 me-[105px] mt-4">
-          <InfoCard icon="gg:check-o" title="1. Eligibility" description="See if you qualify to receive our services" />
-          <InfoCard icon="ant-design:form-outlined" title="2. Register" description="Fill out our Program Interest Form" />
-          <InfoCard icon="bi:box-fill" title="3. Connect" description="Get Connected with AniMeals Services" />
+          <InfoCard
+            icon="gg:check-o"
+            title="1. Eligibility"
+            description="See if you qualify to receive our services"
+          />
+          <InfoCard
+            icon="ant-design:form-outlined"
+            title="2. Register"
+            description="Fill out our Program Interest Form"
+          />
+          <InfoCard
+            icon="bi:box-fill"
+            title="3. Connect"
+            description="Get Connected with AniMeals Services"
+          />
         </div>
       </section>
       <section className="pv-10 flex gap-5 flex-col">
