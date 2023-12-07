@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import Button from '../components/Button';
+import RadioButton from '../components/RadioButton';
 import TextInput from '../components/TextInput';
 
 interface PetProps {
@@ -15,6 +16,11 @@ interface PetProps {
   medications: string
   health: string
   extra: string
+  sprayed: boolean
+  vaccinated: boolean
+  heartworm: boolean
+  flea: boolean
+  take: boolean
   setPetName: Dispatch<SetStateAction<string>>;
   setPetType: Dispatch<SetStateAction<string>>;
   setBreed: Dispatch<SetStateAction<string>>;
@@ -27,6 +33,11 @@ interface PetProps {
   setMedications: Dispatch<SetStateAction<string>>;
   setHealth: Dispatch<SetStateAction<string>>;
   setExtra: Dispatch<SetStateAction<string>>;
+  setSprayed: Dispatch<SetStateAction<boolean>>;
+  setVaccinated: Dispatch<SetStateAction<boolean>>;
+  setHeartworm: Dispatch<SetStateAction<boolean>>;
+  setFlea: Dispatch<SetStateAction<boolean>>;
+  setTake: Dispatch<SetStateAction<boolean>>;
   setFormPage: Dispatch<SetStateAction<string>>;
   num: number
 }
@@ -81,6 +92,67 @@ function Pet(props: PetProps) {
           What does this pet eat? (examples: dry food, can food, table scraps)
           </div>
           <TextInput value={props.eats|| ''} placeholder={''} onChange={props.setEats}/>
+
+          <div className='after:content-["*"] after:text-[red] after:ml-0.5'>
+        Has this pet been sprayed/neutered?
+      </div>
+      <div className="flex">
+      <RadioButton truth={true} check={props.sprayed} change={props.setSprayed} />
+      <label className='ml-3'>Yes</label>
+        <div className='ml-10'>
+      <RadioButton truth={false} check={props.sprayed} change={props.setSprayed}/>
+      </div>
+      <label className='ml-3'>No</label>
+      </div>
+
+      <div className='after:content-["*"] after:text-[red] after:ml-0.5'>
+        Does this pet need vaccinations?
+      </div>
+      <div className="flex">
+      <RadioButton truth={true} check={props.vaccinated} change={props.setVaccinated} />
+      <label className='ml-3'>Yes</label>
+        <div className='ml-10'>
+      <RadioButton truth={false} check={props.vaccinated} change={props.setVaccinated}/>
+      </div>
+      <label className='ml-3'>No</label>
+      </div>
+
+      <div className='after:content-["*"] after:text-[red] after:ml-0.5'>
+      Is this pet on monthly heartworm preventative?
+      </div>
+      <div className="flex">
+      <RadioButton truth={true} check={props.heartworm} change={props.setHeartworm} />
+      <label className='ml-3'>Yes</label>
+        <div className='ml-10'>
+      <RadioButton truth={false} check={props.heartworm} change={props.setHeartworm}/>
+      </div>
+      <label className='ml-3'>No</label>
+      </div>
+
+
+      <div className='after:content-["*"] after:text-[red] after:ml-0.5'>
+      Is this pet on monthly flea preventative?
+      </div>
+      <div className="flex">
+      <RadioButton truth={true} check={props.flea} change={props.setFlea} />
+      <label className='ml-3'>Yes</label>
+        <div className='ml-10'>
+      <RadioButton truth={false} check={props.flea} change={props.setFlea}/>
+      </div>
+      <label className='ml-3'>No</label>
+      </div>
+
+      <div className='after:content-["*"] after:text-[red] after:ml-0.5'>
+      Does this pet take any medications?
+      </div>
+      <div className="flex">
+      <RadioButton truth={true} check={props.take} change={props.setTake} />
+      <label className='ml-3'>Yes</label>
+        <div className='ml-10'>
+      <RadioButton truth={false} check={props.take} change={props.setTake}/>
+      </div>
+      <label className='ml-3'>No</label>
+      </div>
 
           <div className='mt-5'>
           If yes, please list medications
