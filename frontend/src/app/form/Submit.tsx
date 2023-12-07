@@ -38,7 +38,7 @@ function Submit(props: SubmitProps) {
       <label className='ml-3'>No</label>
       </div>
 
-      <div onClick={()=>props.setFormPage("Submit")} className='mt-5 text-right'>
+      <div onClick={()=>props.setFormPage("Confirm")} className='mt-5 text-right'>
           <Button text="Submit"/>
           </div>
 
