@@ -5,12 +5,20 @@ import CollapsibleContent from "@/app/components/CollapsibleContent";
 import LoginButton from "@/app/components/LoginButton";
 import { useState } from "react";
 import SectionTitle from "@/app/components/SectionTitle";
-import LoginPage from "@/app/loginPage"
+import LoginPage from "@/app/loginPage/page"
+import Link from 'next/link'
+
 
 // TODO: add HTML semantic elements.
 export default function Home() {
   return (
+    
     <div className="flex flex-col gap-14 leading-10">
+      {/*<Link className={`text-[large] ml-auto no-underline text-[rgb(255,_255,_255)] hover:bg-[var(--secondary-color)] ${
+                  pathname=='./loginPage.tsx'
+                    ? "text-[var(--tertiary-color)] font-bold"
+                    : ""
+                }`} href="/volunteer">Volunteer</Link>*/}
       <section className="h-[515px] w-full relative">
         <Image
           src="/images/animals.jpeg"
@@ -85,7 +93,7 @@ export default function Home() {
         />
       </section>
 
-      {/* TODO: Instagram API support.*/ }
+      {/* TODO: Instagram API support. */}
       <section className="p-10">
         <SectionTitle text="Connect with CCA on Instagram" />
       </section>

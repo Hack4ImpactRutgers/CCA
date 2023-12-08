@@ -1,10 +1,10 @@
 "use client"
-import './globals.css'
+import '@/app/globals.css'
 import {useState} from 'react';
 import TextInput from "@/app/components/TextInput";
 import Button from "@/app/components/Button";
 import LoginButton from "@/app/components/LoginButton";
-import Header from './components/Header';
+import Header from '../components/Header';
 import Image from 'next/image';
 import image1 from '/public/svg/image1.png';
 
