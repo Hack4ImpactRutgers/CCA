@@ -21,6 +21,16 @@ export default function InformationForm() {
     const [secondLast, setSecondLast] = useState("")
     const [secondPhone, setSecondPhone] = useState("")
 
+    const [litter, setLitter]=useState(false)
+    const [supplies, setSupplies]=useState(false)
+    const [petMedication, setPetMedication] = useState(false);
+const [vetServices, setVetServices] = useState(false);
+const [petTransport, setPetTransport] = useState(false);
+const [petWalking, setPetWalking] = useState(false);
+const [boarding, setBoarding] = useState(false);
+const [other, setOther] = useState(false);
+
+
     const [petName1, setPetName1] = useState("")
     const [petType1, setPetType1] = useState("")
     const [breed1, setBreed1] = useState("")
@@ -103,7 +113,8 @@ useEffect(() => {
         </div>
         <div className='mx-10 my-5'>
             {formPage=="Client" && <Client first={firstName} setFirst={setFirstName} last = {lastName} setLast={setLastName} site ={site} setSite={setSite} address={address} setAddress={setAddress} city={city} setCity={setCity} zip={zipCode} setZip={setZipCode} phone={phone} setPhone={setPhone} secondFirst={secondFirst} setSecondFirst={setSecondFirst} secondLast={secondLast} setSecondLast={setSecondLast} secondPhone={secondPhone} setSecondPhone={setSecondPhone} setFormPage={setFormPage}/>}
-            {formPage=="Information" && <Information setFormPage={setFormPage}/>}
+            {formPage === "Information" && <Information litter={litter} setLitter={setLitter} supplies={supplies} setSupplies={setSupplies} petMedication={petMedication} setPetMedication={setPetMedication} vetServices={vetServices} setVetServices={setVetServices} petTransport={petTransport} setPetTransport={setPetTransport} petWalking={petWalking} setPetWalking={setPetWalking} boarding={boarding} setBoarding={setBoarding} other={other} setOther={setOther} setFormPage={setFormPage} />}
+
             {formPage === "Pet1" && <Pet petName={petName1} setPetName={setPetName1} petType={petType1} setPetType={setPetType1} breed={breed1} setBreed={setBreed1} age={age1} setAge={setAge1} weight={weight1} setWeight={setWeight1} color={color1} setColor={setColor1} howLong={howLong1} setHowLong={setHowLong1} spendTime={spendTime1} setSpendTime={setSpendTime1} eats={eats1} setEats={setEats1} medications={medications1} setMedications={setMedications1} health={health1} setHealth={setHealth1} extra={extra1} setExtra={setExtra1} sprayed={sprayed1} setSprayed={setSprayed1} vaccinated={vaccinated1} setVaccinated={setVaccinated1} heartworm={heartworm1} setHeartworm={setHeartworm1} flea={flea1} setFlea={setFlea1} take={take1} setTake={setTake1} setFormPage={setFormPage} num={1} />}
 
             {formPage === "Pet2" && <Pet petName={petName2} setPetName={setPetName2} petType={petType2} setPetType={setPetType2} breed={breed2} setBreed={setBreed2} age={age2} setAge={setAge2} weight={weight2} setWeight={setWeight2} color={color2} setColor={setColor2} howLong={howLong2} setHowLong={setHowLong2} spendTime={spendTime2} setSpendTime={setSpendTime2} eats={eats2} setEats={setEats2} medications={medications2} setMedications={setMedications2} health={health2} setHealth={setHealth2} extra={extra2} setExtra={setExtra2} sprayed={sprayed2} setSprayed={setSprayed2} vaccinated={vaccinated2} setVaccinated={setVaccinated2} heartworm={heartworm2} setHeartworm={setHeartworm2} flea={flea2} setFlea={setFlea2} take={take2} setTake={setTake2} setFormPage={setFormPage} num={2} />}
