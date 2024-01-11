@@ -1,4 +1,4 @@
-# This workflow builds the app, runs ESLint, and checks for TypeScript compilation errors.
+# This workflow builds the app, runs ESLint, checks for TypeScript compilation errors, and runs all tests.
 name: Frontend-CI
 on: push
 jobs:
@@ -23,3 +23,5 @@ jobs:
         run: pnpm lint
       - name: Run TypeScript compiler
         run: pnpm tsc --noEmit
+      - name: Run tests
+        run: pnpm test

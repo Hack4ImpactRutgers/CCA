@@ -29,3 +29,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Deployments
 
 A new deployment of the app is created on every push to `main`. Visit the latest iteration [here](https://cca-frontend.vercel.app).
+
+## Testing
+
+We write our tests using [Jest](https://jestjs.io/). To run all tests:
+
+```bash
+pnpm test
+```
