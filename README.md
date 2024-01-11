@@ -2,12 +2,6 @@
 
 ## Getting Started
 
-Navigate to the `frontend` directory:
-
-```bash
-cd ./frontend
-```
-
 If it is not already installed on your machine, install [`pnpm`](https://pnpm.io/):
 
 ```bash
