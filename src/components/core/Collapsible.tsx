@@ -19,7 +19,7 @@ export const Collapsible: FC<Collapsible> = ({ title, content }) => {
                         className={`transition-transform ${
                             isCollapsed ? 'rotate-180' : 'rotate-0'
                         }`}
-                        src="/svg/up-arrow.svg"
+                        src="/svgs/up-arrow.svg"
                         alt="up arrow"
                         width={61}
                         height={61}

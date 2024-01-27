@@ -19,6 +19,8 @@ export const Button: FC<ButtonProps> = ({ text, onClick, iconPath }) => {
                     src={iconPath}
                     alt={text}
                     className="h-[38px] w-[38px]"
+                    width={38}
+                    height={38}
                 />
             )}
         </button>

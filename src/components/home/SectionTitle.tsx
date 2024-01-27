@@ -5,5 +5,5 @@ interface SectionTitleProps {
 }
 
 export const SectionTitle: FC<SectionTitleProps> = ({ text }) => {
-    return <p className="text-5xl font-bold text-primary">{text}</p>;
+    return <p className="text-5xl font-bold text-tertiary">{text}</p>;
 };
