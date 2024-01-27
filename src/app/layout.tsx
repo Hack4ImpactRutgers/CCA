@@ -17,7 +17,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
         <html lang="en">
             <body>
                 <Navbar />
-                {children}
+                <div className="mt-[112px]">{children}</div>
             </body>
         </html>
     );

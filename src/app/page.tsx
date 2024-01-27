@@ -12,7 +12,7 @@ interface PageProps {}
 // TODO: add HTML semantic elements.
 const Page: FC<PageProps> = () => {
     return (
-        <div className="flex flex-col gap-14 leading-10">
+        <main className="flex flex-col gap-14 leading-10" data-testid="main">
             <section className="relative h-[515px] w-full">
                 <Image
                     src="/images/animals.jpeg"
@@ -126,11 +126,18 @@ const Page: FC<PageProps> = () => {
                     <Button
                         text="Follow Us"
                         iconPath="/images/instagram.png"
-                        onClick={() => {}}
+                        onClick={() =>
+                            window
+                                ?.open(
+                                    'https://www.instagram.com/combinedcommunityaction/',
+                                    '_blank'
+                                )
+                                ?.focus()
+                        }
                     />
                 </div>
             </section>
-        </div>
+        </main>
     );
 };
 

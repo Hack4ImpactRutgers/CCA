@@ -5,14 +5,14 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #ABCF38;
-  --secondary-color: #00B5C2;
-  --tertiary-color: #003852;
+    --primary-color: #abcf38;
+    --secondary-color: #00b5c2;
+    --tertiary-color: #003852;
 
-  --primary-font: 'Montserrat', sans-serif;
-  --secondary-font: 'Roboto', sans-serif;
+    --primary-font: 'Montserrat', sans-serif;
+    --secondary-font: 'Roboto', sans-serif;
 }
 
 body {
-  font-family: var(--primary-font);
+    font-family: var(--primary-font);
 }

@@ -11,8 +11,8 @@ export const LoginButton: FC<LoginButton> = ({ text, onClick, active }) => {
     return (
         <button
             onClick={onClick}
-            className={`w-[120px] font-semibold transition-colors ${
-                active && 'text-secondary'
+            className={`w-[120px] transition-colors ${
+                active && 'font-semibold text-secondary'
             }`}
         >
             <div
