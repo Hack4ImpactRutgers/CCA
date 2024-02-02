@@ -89,7 +89,7 @@ router.post("/otp/request-otp", async (req, res) => {
     });
 
     // Save the OTP with an expiration of 5 minutes
-    const newOTP = new OTP({ email, otp, expiresAt: new Date(Date.now() + 5 * 60000) });
+    const newOTP = new OTP({ email, otp });
     await newOTP.save();
     res.json("Email sent");
   } catch (err) {
@@ -112,7 +112,7 @@ router.post("/volunteer/login", async (req, res) => {
   }
 
   // Check if the provided OTP is valid and not expired
-  const validOTP = await OTP.findOne({ email, otp, expiresAt: { $gt: new Date() } });
+  const validOTP = await OTP.findOne({ email, otp });
   if (!validOTP) {
     return res.status(400).json("Invalid OTP");
   }
