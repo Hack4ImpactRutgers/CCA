@@ -177,7 +177,7 @@ function Pet(props: PetProps) {
           <Button text="Continue"/>
           </div>}
 
-          {props.num==3 && <div onClick={()=>props.setFormPage("Assessment")} className='mt-5 text-right'>
+          {props.num==3 && <div onClick={()=>props.setFormPage("Confirm")} className='mt-5 text-right'>
           <Button text="Submit"/>
           </div>}
 

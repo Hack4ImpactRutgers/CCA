@@ -6,6 +6,7 @@ import Client from './Client'
 import Pet from './Pet'
 import Button from '../components/Button'
 import Information from './Information'
+import Confirmation from './Confirmation'
 
 
 export default function InformationForm() { 
@@ -97,9 +98,7 @@ useEffect(() => {
 
   return (
     <div>
-      <div className="font-bold flex items-center justify-center border-b-2 border-black">
-        <h1>Delivery Report </h1>
-      </div>
+      {formPage !== "Confirm" && (
       <div className="flex h-full ">
         <div className='text-lg flex flex-col  px-8 py-6 w-fit border-r-2 border-black'>
          
@@ -127,6 +126,8 @@ useEffect(() => {
         
         
        </div>
+      )}
+      {formPage=="Confirm"&& <Confirmation/>}
        </div>
 
   )
