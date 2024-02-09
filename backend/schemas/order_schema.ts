@@ -3,8 +3,8 @@ const { Schema, Types } = mongoose;
 
 const orderSchema = new mongoose.Schema(
   {
-    client: { type: Types.ObjectId, ref: Schema.Client, required: true },
-    assignedVolunteers: [ {type: Types.ObjectId, ref: Schema.Volunteer} ],
+    client: { type: Types.ObjectId, ref: 'Client', required: true },
+    assignedVolunteers: [{ type: Types.ObjectId, ref: 'Volunteer' }],
     createdOn: { type: Date },
     deliverBy: { type: Date },
     cost: { type: Number }
