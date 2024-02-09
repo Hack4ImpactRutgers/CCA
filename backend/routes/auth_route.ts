@@ -1,10 +1,14 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import jwt, { Secret } from "jsonwebtoken";
 import nodemailer from "nodemailer";
 import OTP from "../schemas/otp_schema";
 import EmailToBeApproved from "../schemas/emails_schema";
 import Admin from "../schemas/admin_schema";
 import bcrypt from "bcryptjs";
+import auth from "../middleware/auth";
+import roles from "../middleware/roles";
+
+const saltRounds = 10;
 
 const router = express.Router();
 
@@ -134,6 +138,45 @@ router.post("/volunteer/logout", (req, res) => {
   res.clearCookie("token");
   res.json("User logged out");
 });
+
+/**
+ * Endpoint to register an admin.
+ * 
+ * Requires admin privileges.
+ */
+router.post("/admin/register", [auth, roles.admin], async (req: Request, res: Response) => {
+  const { name, email, password } = req.body;
+
+  // validate request
+  if(!name || !email || !password) {
+    return res.status(400).json("Please enter all fields");
+  }
+
+  const admin = await Admin.findOne({ email: email });
+  if(admin) {
+    return res.status(400).json("Admin already exists");
+  }
+
+  const hash = bcrypt.hashSync(password, saltRounds);
+  
+  const newAdmin = new Admin({
+    name: name,
+    email: email,
+    password: hash
+  });
+
+  newAdmin.save()
+    .then(() => {
+      // Respond with a success message and a 201 status code
+      res.status(201).json("Admin successfully registered");
+    })
+    .catch((err: any) => {
+      // Log the error and respond with a 400 status code
+      console.error(err);
+      res.status(400).send({ error: err.message });
+    });
+});
+
 
 /**
  * Endpoint to request admin login. 
