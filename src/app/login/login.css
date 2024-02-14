@@ -30,7 +30,7 @@ body {
     color: rgb(var(--foreground-rgb));
     background: white;
     height: 100%;
-    width: 100%l;
+    width: 100%;
 }
 
 #mainComps {
