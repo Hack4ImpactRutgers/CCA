@@ -1,5 +1,4 @@
 'use client';
-import './login.css';
 import { FC, useState } from 'react';
 import { TextInput } from '@/components/core/TextInput';
 import { Button } from '@/components/core/Button';
@@ -39,6 +38,9 @@ export default function LoginPage() {
     const volunteerConfirm = (): void => {
         setSelectedOption('volLogInConfirm');
     };
+    const volunteerConfirm2 = (): void => {
+      setSelectedOption('volLogInConfirm2');
+  };
 
     const volunteerSigningUpConfirm = (): void => {
         setSelectedOption('volSignUpConfirm');
@@ -55,6 +57,9 @@ export default function LoginPage() {
             if (selectedOption == 'volunteer') {
                 volunteerConfirm();
             }
+            if (selectedOption == 'volunteer2') {
+                volunteerConfirm2();
+            }
             if (selectedOption == 'volSignUp') {
                 volunteerSigningUpConfirm();
             }
@@ -62,27 +67,18 @@ export default function LoginPage() {
     };
 
     return (
-        <div id="fullPage">
+        <div id="fullPage" className="bg-white">
             {/* 
       <TextInput placeholder={"awdad"} value={textInput} onChange={setTextInput} />
       <Button text={"awdad"}></Button>
       */}
-            <div id="header">
+            <div className="h-10 min-h-10 bg-primary-color">
                 <Navbar />
             </div>
 
-            <div id="mainComps">
-                <div id="admvol">
-                    <div
-                        style={{
-                            width: 'fit-content',
-                            height: 'fit-content',
-                            float: 'left',
-                            margin: 'auto',
-                            marginBottom: '15%',
-                            marginRight: '20px',
-                        }}
-                    >
+            <div className="w-auto h-96 m-auto">
+                <div className="flex justify-center items-center h-auto w-auto mt-10">
+                    <div className="mr-1">
                         <LoginButton
                             text={'Admin'}
                             onClick={handleAdminClick}
@@ -90,14 +86,7 @@ export default function LoginPage() {
                         />
                     </div>
 
-                    <div
-                        style={{
-                            width: 'fit-content',
-                            height: 'fit-content',
-                            float: 'left',
-                            margin: 'auto',
-                        }}
-                    >
+                    <div className="ml-1">
                         <LoginButton
                             text={'Volunteer'}
                             onClick={handleVolunteerClick}
@@ -106,14 +95,8 @@ export default function LoginPage() {
                     </div>
                 </div>
 
-                <div
-                    style={{
-                        height: 'fit-content',
-                        width: '100%',
-                        float: 'left',
-                    }}
-                >
-                    <div id="image">
+                <div className="flex justify-center items-center">
+                    <div className="h-239 w-239 mx-auto">
                         <Image
                             src={image1}
                             alt="image"
@@ -124,24 +107,13 @@ export default function LoginPage() {
                 </div>
 
                 {selectedOption === 'admin' && (
-                    <div>
+                    <div  className="flex flex-col justify-center items-center">
                         <div id="adminContent">
-                            <div
-                                style={{
-                                    margin: 'auto',
-                                    height: 'fit-content',
-                                    width: 'fit-content',
-                                }}
-                            >
-                                <h1>Account Login</h1>
+                            <div>
+                                <h1 className="font-bold font-roboto text-2xl text-center mt-2 mb-2">Account Login</h1>
                             </div>
                             <div
-                                style={{
-                                    width: 'fit-content',
-                                    margin: 'auto',
-                                    marginTop: '4%',
-                                    marginBottom: '4%',
-                                }}
+                                className="mt-4 mb-4"
                                 id="userInput"
                             >
                                 <TextInput
@@ -151,12 +123,7 @@ export default function LoginPage() {
                                 />
                             </div>
                             <div
-                                style={{
-                                    width: 'fit-content',
-                                    margin: 'auto',
-                                    marginTop: '4%',
-                                    marginBottom: '4%',
-                                }}
+                                className="mt-4 mb-4"
                                 id="passwordInput"
                             >
                                 <TextInput
@@ -167,7 +134,7 @@ export default function LoginPage() {
                             </div>
                         </div>
 
-                        <div id="smallLinks">
+                        <div className="font-bold font-roboto text-xs mx-auto w-full text-center pb-3 text-secondary">
                             <button onClick={forgotPassword}>
                                 Forgot Username or Password?
                             </button>
@@ -184,40 +151,21 @@ export default function LoginPage() {
 
                 {selectedOption === 'admLoggingIn' && (
                     <div>
-                        <div
-                            style={{
-                                margin: 'auto',
-                                height: 'fit-content',
-                                width: '100%',
-                                float: 'left',
-                                marginTop: '50px',
-                            }}
-                        >
-                            <h1>Confirmed</h1>
+                        <div className="flex flex-col justify-center items-center">
+                            <h1 className="font-bold font-roboto text-2xl text-center mt-2 mb-2">Confirmed</h1>
                         </div>
                     </div>
                 )}
 
                 {selectedOption === 'volunteer' && (
-                    <div>
-                        <div id="volunteerContent">
-                            <div
-                                style={{
-                                    margin: 'auto',
-                                    height: 'fit-content',
-                                    width: 'fit-content',
-                                }}
-                            >
-                                <h1>Login</h1>
+                    <div className="flex flex-col justify-center items-center">
+                        <div id="volunteerContent" >
+                            <div>
+                                <h1 className="font-bold font-roboto text-2xl text-center mt-2 mb-2">Login</h1>
                             </div>
 
-                            <div
-                                style={{
-                                    width: 'fit-content',
-                                    margin: 'auto',
-                                    marginTop: '4%',
-                                    marginBottom: '4%',
-                                }}
+                            <div 
+                                className="mt-4 mb-4"
                                 id="nameInput"
                             >
                                 <TextInput
@@ -228,12 +176,7 @@ export default function LoginPage() {
                             </div>
 
                             <div
-                                style={{
-                                    width: 'fit-content',
-                                    margin: 'auto',
-                                    marginTop: '4%',
-                                    marginBottom: '4%',
-                                }}
+                                className="mt-4 mb-4"
                                 id="emailInput"
                             >
                                 <TextInput
@@ -244,11 +187,11 @@ export default function LoginPage() {
                             </div>
                         </div>
 
-                        <div id="smallLinks">
+                        <div className="font-bold font-roboto text-xs mx-auto w-full text-center pb-3 text-secondary">
                             <button onClick={volSignUp}>Signup</button>
                         </div>
 
-                        <div id="logButton">
+                        <div id="logButton" className="m-auto">
                             <Button
                                 onClick={volunteerConfirm}
                                 text={'Confirm'}
@@ -258,75 +201,47 @@ export default function LoginPage() {
                 )}
 
                 {selectedOption === 'volLogInConfirm' && (
-                    <div>
-                        <div
-                            style={{
-                                margin: 'auto',
-                                height: 'fit-content',
-                                width: '100%',
-                                float: 'left',
-                                marginTop: '50px',
-                                textAlign: 'center',
-                            }}
-                        >
+                    <div  className="flex flex-col justify-center items-center">
+                        <div className="mx-auto text-center mt-4">
                             Enter the code sent to your email
-                            <div
-                                style={{
-                                    width: '1%',
-                                    marginTop: '4%',
-                                    marginBottom: '4%',
-                                }}
-                            >
+                            <div className="mt-4 mb-4">
                                 <CodeInput />
                             </div>
                         </div>
                         <div id="logButton">
                             <Button
-                                onClick={volunteerConfirm}
+                                onClick={volunteerConfirm2}
                                 text={'Confirm'}
                             ></Button>
                         </div>
                     </div>
                 )}
 
+                {selectedOption === 'volLogInConfirm2' && (
+                    <div className="flex flex-col justify-center items-center">
+                      <h1 className="font-bold font-roboto text-2xl text-center mt-2 mb-2">Logged In!</h1>
+                    </div>
+                )}
+
                 {selectedOption === 'forgotPass' && (
                     <div>
                         <div id="forgotPassContent">
-                            <div
-                                style={{
-                                    margin: 'auto',
-                                    height: 'fit-content',
-                                    width: '100%',
-                                    float: 'left',
-                                    marginTop: '50px',
-                                }}
-                            >
-                                <h1>forgot pass! TBD</h1>
+                            <div className="flex flex-col justify-center items-center">
+                                <h1 className="font-bold font-roboto text-2xl text-center mt-2 mb-2">forgot pass! TBD</h1>
                             </div>
                         </div>
                     </div>
                 )}
 
                 {selectedOption === 'volSignUp' && (
-                    <div>
+                    <div  className="flex flex-col justify-center items-center">
                         <div id="volSignUpContent">
-                            <div
-                                style={{
-                                    margin: 'auto',
-                                    height: 'fit-content',
-                                    width: 'fit-content',
-                                }}
-                            >
-                                <h1>Sign Up</h1>
+                            <div>
+                                <h1 className="font-bold font-roboto text-2xl text-center mt-2 mb-2">Sign Up</h1>
                             </div>
 
                             <div
-                                style={{
-                                    width: 'fit-content',
-                                    margin: 'auto',
-                                    marginTop: '4%',
-                                    marginBottom: '4%',
-                                }}
+                                className="mt-4 mb-4"
                                 id="nameInput"
                             >
                                 <TextInput
@@ -337,12 +252,7 @@ export default function LoginPage() {
                             </div>
 
                             <div
-                                style={{
-                                    width: 'fit-content',
-                                    margin: 'auto',
-                                    marginTop: '4%',
-                                    marginBottom: '4%',
-                                }}
+                                className="mt-4 mb-4"
                                 id="numberInput"
                             >
                                 <TextInput
@@ -353,12 +263,7 @@ export default function LoginPage() {
                             </div>
 
                             <div
-                                style={{
-                                    width: 'fit-content',
-                                    margin: 'auto',
-                                    marginTop: '4%',
-                                    marginBottom: '4%',
-                                }}
+                                className="mt-4 mb-4"
                                 id="emailInput"
                             >
                                 <TextInput
@@ -379,16 +284,9 @@ export default function LoginPage() {
                 )}
 
                 {selectedOption === 'volSignUpConfirm' && (
-                    <div
-                        style={{
-                            margin: 'auto',
-                            height: 'fit-content',
-                            width: '100%',
-                            float: 'left',
-                            marginTop: '50px',
-                        }}
+                    <div className="flex flex-col justify-center items-center"
                     >
-                        <h1>Confirmed</h1>
+                        <h1 className="font-bold font-roboto text-2xl text-center mt-2 mb-2">Confirmed</h1>
                     </div>
                 )}
             </div>
