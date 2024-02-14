@@ -7,7 +7,7 @@ import { Navbar } from '@/components/core/Navbar';
 import Image from 'next/image';
 import image1 from '/public/images/logo.png';
 import Link from 'next/link';
-import { CodeInput } from '@/components/auth/CodeInput';
+import { CodeInput } from '@/components/auth/CodeInput'; 
 
 export default function LoginPage() {
     const [userTextInput, setUserTextInput] = useState('');
