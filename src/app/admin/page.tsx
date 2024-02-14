@@ -8,7 +8,7 @@ const Page: FC<PageProps> = () => {
         <main>
             <Dashboard />
         </main>
-    )
+    );
 };
 
 export default Page;
