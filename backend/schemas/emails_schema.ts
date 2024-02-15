@@ -1,17 +1,17 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const emailSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
 });
 
 const EmailToBeApproved = mongoose.model(
-  "EmailToBeApproved",
-  emailSchema,
-  "emailsToBeApproved"
+    'EmailToBeApproved',
+    emailSchema,
+    'emailsToBeApproved'
 );
 
 export default EmailToBeApproved;
