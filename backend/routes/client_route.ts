@@ -22,6 +22,29 @@ router.get("/:id", (req: Request, res: Response) => {
     });
 });
 
+// Route to fetch all clients filtered based on deliveryStatus in the orderSchema and/or region 
+// in the clientSchema
+router.get("/region-deliveryStatus", (req: Request, res: Response) => {
+  const { region, deliveryStatus } = req.query;
+  const query: any = {};
+  if (region) {
+    query.region = region;
+  }
+  if (deliveryStatus) {
+    query.deliveryStatus = deliveryStatus;
+  }
+  Client.find(query)
+    .then((clients: any) => {
+      // Respond with the clients data
+      res.send(clients);
+    })
+    .catch((err: any) => {
+      // Log the error and respond with a 500 status code
+      console.error(err);
+      res.status(500).send({ error: "An error occurred fetching the clients." });
+    });
+});
+
 // Route to create and save a new client
 router.post("/", [auth, roles.admin], (req: Request, res: Response) => {
   const newClient = new Client(req.body);
