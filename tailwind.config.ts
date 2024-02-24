@@ -12,6 +12,7 @@ const config: Config = {
                 primary: 'var(--primary-color)',
                 secondary: 'var(--secondary-color)',
                 tertiary: 'var(--tertiary-color)',
+                lightTeal: '#F9FEFE',
             },
             fontFamily: {
                 primary: 'var(--primary-font)',
