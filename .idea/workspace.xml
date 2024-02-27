@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="63abdba7-266c-46a5-96d5-912a95078c1f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/frontend/backend/.eslintignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/connectDB.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/endpoints.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/jest.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/middleware/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/middleware/roles.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/routes/admin_route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/routes/auth_route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/routes/client_route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/routes/order_route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/routes/volunteer_route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/schemas/admin_schema.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/schemas/client_schema.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/schemas/emails_schema.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/schemas/order_schema.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/schemas/otp_schema.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/schemas/password_change_schema.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/schemas/pending_volunteer_schema.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/schemas/sample_schema.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/schemas/volunteer_schema.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/tests/admin.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/tests/middleware.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/tests/server.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/tests/volunteer.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/backend/tsconfig.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/frontend" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2beT98YiyDlDzuQUuLjxelICeeh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/ogreeni/Desktop/code/hack4impact/CCA-frontend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/admin" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="63abdba7-266c-46a5-96d5-912a95078c1f" name="Changes" comment="" />
+      <created>1706574393280</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1706574393280</updated>
+      <workItem from="1706574396412" duration="13000" />
+      <workItem from="1706718933324" duration="2002000" />
+      <workItem from="1706758752306" duration="20000" />
+      <workItem from="1707887194466" duration="5023000" />
+      <workItem from="1707929226051" duration="61000" />
+      <workItem from="1708012317936" duration="350000" />
+      <workItem from="1708012818662" duration="12000" />
+      <workItem from="1708017432690" duration="45000" />
+      <workItem from="1708107162487" duration="14000" />
+      <workItem from="1709051376404" duration="197000" />
+      <workItem from="1709053001495" duration="334000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
