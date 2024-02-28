@@ -1,32 +1,39 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
 import ChartJS from 'chart.js/auto';
+import {calculateLbsPerBrand} from './Dashboard';
 //import 'chartjs-adapter-date-fns'; // Import adapter for date formatting (optional)
 
 interface PieChartData {
     labels: string[];
-    foodOrders: number[];
     data: number[];
+    foodOrders: { [key: string]: number };
+    costs: number[];
     backgroundColor: string[];
 }
 
 const Chart: React.FC<{ data: any[] }> = ({ data }) => {
     const [chartData, setChartData] = useState<PieChartData | null>(null);
+    const [foodOrders, setFoodOrders] = useState<{ [key: string]: number }>({});
+    // Declare foodOrders at a higher scope level
 
-    const chartRef = useRef<ChartJS<"doughnut", number[], string> | null>(null); // Specify type as Chart | null
-
+    const chartRef = useRef<ChartJS<"doughnut", number[], string> | null>(null); 
 
     useEffect(() => {
         // Extracting data for the chart
         const labels: string[] = data.map((item: any) => item.Brand);
-        const foodOrders: number[] = data.map((item: any) => item['Total food orders (lbs)']);
+        const foodOrdersData: { [key: string]: number } = calculateLbsPerBrand(data);
         const costs: number[] = data.map((item: any) => item['Total cost ($)']);
-        const colors: string[] = ['#98F5E1', '#FFB7A9', '#A9BCFF', '#FFCF33']; // Color array for each slice
-                                //'#FFCF33', '#98F5E1', '#A9BCFF', '#FFB7A9'
+        const colors: string[] = ['#98F5E1', '#FFB7A9', '#A9BCFF', '#FFCF33']; 
+
+        setFoodOrders(foodOrdersData); // Update foodOrders state
+
+        const foodOrdersValues= Object.values(foodOrdersData);
         setChartData({
             labels,
-            foodOrders,
-            data: costs,
+            data: foodOrdersValues,
+            foodOrders: foodOrdersData,
+            costs,
             backgroundColor: colors,
         });
     }, [data]);
@@ -62,9 +69,11 @@ const Chart: React.FC<{ data: any[] }> = ({ data }) => {
         }
     }, [chartData]);
 
-    const totalCostSum = data.reduce((acc, curr) => acc + curr['Total cost ($)'], 0);
-    const totalFoodOrdersSum = chartData?.foodOrders.reduce((acc, curr) => acc + curr, 0);
-    
+    const totalCostSum = chartData?.costs.reduce((acc, curr) => acc + curr, 0);
+    //const totalFoodOrdersSum = chartData ? 
+    //    Object.values(chartData.foodOrders).reduce((acc, curr) => acc + curr, 0) : 
+    //    0;    
+    const totalFoodOrdersSum = chartData?.data.reduce((acc, curr) => acc + curr, 0) || 0;
     return (
         <div className="space-y-12">
             <div className="flex items-center justify-center items-center h-15 w-full space-x-4">
@@ -91,13 +100,13 @@ const Chart: React.FC<{ data: any[] }> = ({ data }) => {
                 </div>
                 
                 <div className="space-y-4 w-[35%]">
-                        {data.map((item, index) => (
+                        {Object.keys(foodOrders).map((brand, index) => (
                             <div key={index}>
                                 <div className="bg-gray-200 h-2 rounded">
                                     <div
                                         className="h-full rounded"
                                         style={
-                                            { width: `${(item['Total cost ($)'] / totalCostSum) * 100}%`, 
+                                            { width: `${(foodOrders[brand] / totalFoodOrdersSum) * 100}%`, 
                                             backgroundColor: `${(chartData?.backgroundColor[index % chartData?.backgroundColor.length])}`
                                         } 
                                         }
@@ -112,7 +121,7 @@ const Chart: React.FC<{ data: any[] }> = ({ data }) => {
                                             }
                                         ></div>
                                     </div>
-                                    <p className="mt-2 text-color:black">{item.Brand}</p>
+                                    <p className="mt-2 text-color:black">{brand}</p>
                                 </div>
                                 
                             </div>
