@@ -18,6 +18,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiPersistence">
+    <option name="context" value="gke_durable-bit-366623_us-central1_autopilot-cluster-1" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -38,8 +41,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "pnpm",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "/Users/ogreeni/Desktop/code/hack4impact/CCA-frontend/node_modules/typescript/lib",
+    "prettierjs.PrettierConfiguration.Package": "/Users/ogreeni/Desktop/code/hack4impact/CCA/frontend/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "/Users/ogreeni/Desktop/code/hack4impact/CCA/backend/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -68,6 +72,7 @@
       <workItem from="1709051376404" duration="197000" />
       <workItem from="1709053001495" duration="1929000" />
       <workItem from="1709056617276" duration="2118000" />
+      <workItem from="1709326566227" duration="1136000" />
     </task>
     <servers />
   </component>
