@@ -36,19 +36,21 @@ function Pet(props: PetProps) {
       <div className='mt-5 '>
           Amount of Food Per Month
           </div>
+
           <TextInput value={props.foodAmount || ''} placeholder={''} onChange={props.setFoodAmount}/>
-
-          {props.num==1 && <div onClick={()=>props.setFormPage("Pet2")} className='mt-5 text-right'>
+        <div className='flex flex-row'>
+          {<div onClick={()=>props.setFormPage("Assessment")} className='mt-5'>
           <Button text="Continue"/>
           </div>}
 
-          {props.num==2 && <div onClick={()=>props.setFormPage("Pet3")} className='mt-5 text-right'>
-          <Button text="Continue"/>
+          {props.num==1 && <div onClick={()=>props.setFormPage("Pet2")} className='mt-5 ml-5 text-right'>
+          <Button text="Add Pet"/>
           </div>}
 
-          {props.num==3 && <div onClick={()=>props.setFormPage("Assessment")} className='mt-5 text-right'>
-          <Button text="Continue"/>
+          {props.num==2 && <div onClick={()=>props.setFormPage("Pet3")} className='mt-5 ml-5 text-right'>
+          <Button text="Add Pet"/>
           </div>}
+          </div>
 
     </form>
   )

@@ -45,7 +45,7 @@ function Assessment(props: AssessmentProps) {
       <RadioButton truth={true} check={props.lasting} change={props.setLasting} />
       <label className='ml-3'>Yes</label>
         <div className='ml-10'>
-      <RadioButton truth={false} check={props.lasting} change={props.setLasting}/>
+      <RadioButton truth={false} check={!props.lasting} change={props.setLasting}/>
       </div>
       <label className='ml-3'>No</label>
       </div>
@@ -72,7 +72,7 @@ function Assessment(props: AssessmentProps) {
       <TextInput value={props.comments || ''} placeholder={''} onChange={props.setComments }/>
 
       <div className='mt-5 after:content-["*"] after:text-[red] after:ml-0.5'>
-        Does the client need any other supplies (collars, leashes,bowls, etc)?
+        Does the client need any other supplies (collars, leashes, bowls, etc)?
       </div>
       <TextInput value={props.supplies || ''} placeholder={''} onChange={props.setSupplies }/>
 

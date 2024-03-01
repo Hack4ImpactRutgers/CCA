@@ -2,7 +2,7 @@
 import React, {  useEffect, useState  } from 'react'
 import {ReactNode} from "react"
 import Link from "next/link"
-import Client from './Client'
+import Client from './client'
 import Pet from './Pet'
 import Button from '../components/Button'
 import Assessment from './Assessment'
@@ -39,6 +39,7 @@ export default function DeliveryReportForm() {
 
 
     const [name,setName]=useState("")
+    const [selectedDate,setSelectedDate] = useState(new Date())
     const [updated, setUpdated]=useState(false)
 
     useEffect(() => {
@@ -69,7 +70,7 @@ export default function DeliveryReportForm() {
               {formPage=="Pet2" && <Pet petName={petName2} setPetName={setPetName2} foodType={foodType2} setFoodType={setFoodType2} foodAmount={foodAmount2} setFoodAmount={setFoodAmount2}  setFormPage={setFormPage} num={2}/>}
               {formPage=="Pet3" && <Pet petName={petName3} setPetName={setPetName3} foodType={foodType3} setFoodType={setFoodType3} foodAmount={foodAmount3} setFoodAmount={setFoodAmount3}  setFormPage={setFormPage} num={3}/>}
               {formPage === "Assessment" && <Assessment lasting={lasting} setLasting={setLasting} comments={comments} setComments={setComments} supplies={supplies} setSupplies={setSupplies} needs={needs} setNeeds={setNeeds} cup={cup} setCup={setCup} scale={scale} setScale={setScale} setFormPage={setFormPage} />}
-              {formPage=="Submit" && <Submit name={name} setName={setName} updated={updated} setUpdated={setUpdated} setFormPage={setFormPage}/>}
+              {formPage=="Submit" && <Submit name={name} setName={setName} selectedDate={selectedDate} setSelectedDate={setSelectedDate} updated={updated} setUpdated={setUpdated} setFormPage={setFormPage}/>}
         
           </div>
           

@@ -100,7 +100,7 @@ function Pet(props: PetProps) {
       <RadioButton truth={true} check={props.sprayed} change={props.setSprayed} />
       <label className='ml-3'>Yes</label>
         <div className='ml-10'>
-      <RadioButton truth={false} check={props.sprayed} change={props.setSprayed}/>
+      <RadioButton truth={false} check={!props.sprayed} change={props.setSprayed}/>
       </div>
       <label className='ml-3'>No</label>
       </div>
@@ -112,7 +112,7 @@ function Pet(props: PetProps) {
       <RadioButton truth={true} check={props.vaccinated} change={props.setVaccinated} />
       <label className='ml-3'>Yes</label>
         <div className='ml-10'>
-      <RadioButton truth={false} check={props.vaccinated} change={props.setVaccinated}/>
+      <RadioButton truth={false} check={!props.vaccinated} change={props.setVaccinated}/>
       </div>
       <label className='ml-3'>No</label>
       </div>
@@ -124,7 +124,7 @@ function Pet(props: PetProps) {
       <RadioButton truth={true} check={props.heartworm} change={props.setHeartworm} />
       <label className='ml-3'>Yes</label>
         <div className='ml-10'>
-      <RadioButton truth={false} check={props.heartworm} change={props.setHeartworm}/>
+      <RadioButton truth={false} check={!props.heartworm} change={props.setHeartworm}/>
       </div>
       <label className='ml-3'>No</label>
       </div>
@@ -137,7 +137,7 @@ function Pet(props: PetProps) {
       <RadioButton truth={true} check={props.flea} change={props.setFlea} />
       <label className='ml-3'>Yes</label>
         <div className='ml-10'>
-      <RadioButton truth={false} check={props.flea} change={props.setFlea}/>
+      <RadioButton truth={false} check={!props.flea} change={props.setFlea}/>
       </div>
       <label className='ml-3'>No</label>
       </div>
@@ -149,7 +149,7 @@ function Pet(props: PetProps) {
       <RadioButton truth={true} check={props.take} change={props.setTake} />
       <label className='ml-3'>Yes</label>
         <div className='ml-10'>
-      <RadioButton truth={false} check={props.take} change={props.setTake}/>
+      <RadioButton truth={false} check={!props.take} change={props.setTake}/>
       </div>
       <label className='ml-3'>No</label>
       </div>
@@ -168,18 +168,23 @@ function Pet(props: PetProps) {
           Is there anything else you would like us to know about your pet?
           </div>
           <TextInput value={props.extra|| ''} placeholder={''} onChange={props.setExtra}/>
+          <div className='flex flex-row'>
 
-          {props.num==1 && <div onClick={()=>props.setFormPage("Pet2")} className='mt-5 text-right'>
-          <Button text="Continue"/>
-          </div>}
-
-          {props.num==2 && <div onClick={()=>props.setFormPage("Pet3")} className='mt-5 text-right'>
-          <Button text="Continue"/>
-          </div>}
-
-          {props.num==3 && <div onClick={()=>props.setFormPage("Confirm")} className='mt-5 text-right'>
+          {<div onClick={()=>props.setFormPage("Confirm")} className='mt-5 text-right'>
           <Button text="Submit"/>
+          
           </div>}
+
+          {props.num==1 && <div onClick={()=>props.setFormPage("Pet2")} className='mt-5 ml-5 text-right'>
+          <Button text="Add Pet"/>
+          </div>}
+
+          {props.num==2 && <div onClick={()=>props.setFormPage("Pet3")} className='mt-5 ml-5 text-right'>
+          <Button text="Add Pet "/>
+          </div>}
+
+          
+          </div>
 
     </form>
   )
