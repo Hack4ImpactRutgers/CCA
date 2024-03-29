@@ -1,7 +1,7 @@
 {
   "name": "cca-monorepo",
   "version": "1.0.0",
-  "description": "Combined Community Action",
+  "description": "Combined Community Action monorepo",
   "scripts": {
     "start": "concurrently \"cd frontend && pnpm run dev\" \"cd backend && npm run dev\"",
     "postinstall": "cd frontend && pnpm install && cd ../backend && npm install"

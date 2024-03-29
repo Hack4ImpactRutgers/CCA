@@ -1,27 +1,39 @@
 'use client';
-import { FC, FormEventHandler, useState } from 'react';
+import { FC, FormEventHandler, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { TextInput } from '@/components/core/TextInput';
 import { LoginButton } from '@/components/auth/LoginButton';
 import { Button } from '@/components/core/Button';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useAdminLogin, useAdminSignUp, useRequestOTP } from '@/hooks/auth';
 
 interface PageProps {}
 
 const Page: FC<PageProps> = () => {
-    const [usernameInput, setUsernameInput] = useState('');
+    const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
-    const [confirmPasswordInput, setConfirmPasswordInput] = useState('');
     const [loginType, setLoginType] = useState<'ADMIN' | 'VOLUNTEER'>('ADMIN');
-    const [formType, setFormType] = useState<'LOGIN' | 'REGISTER'>('LOGIN');
+    const router = useRouter();
+
+    const { adminLogin, adminLoginSuccess, adminLoginError } = useAdminLogin();
+    const { requestOTP, requestOTPSuccess, requestOTPError } = useRequestOTP();
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
 
-        if (formType === 'REGISTER' && passwordInput != confirmPasswordInput) {
-            // Passwords don't match.
+        if (loginType === 'VOLUNTEER') {
+            if (emailInput) {
+                requestOTP({ email: emailInput });
+            }
             return;
         }
+
+        if (!emailInput || !passwordInput) {
+            return;
+        }
+
+        adminLogin({ email: emailInput, password: passwordInput });
     };
 
     return (
@@ -52,29 +64,22 @@ const Page: FC<PageProps> = () => {
                     Account Login
                 </span>
                 <TextInput
-                    value={usernameInput}
-                    onChange={setUsernameInput}
-                    placeholder={'Username'}
+                    value={emailInput}
+                    onChange={setEmailInput}
+                    placeholder={'Email'}
                     required
                 />
-                <TextInput
-                    value={passwordInput}
-                    onChange={setPasswordInput}
-                    placeholder={'Password'}
-                    type="password"
-                    required
-                />
-                {formType === 'REGISTER' && (
+                {loginType === 'ADMIN' && (
                     <TextInput
-                        value={confirmPasswordInput}
-                        onChange={setConfirmPasswordInput}
-                        placeholder={'Confirm password'}
+                        value={passwordInput}
+                        onChange={setPasswordInput}
+                        placeholder={'Password'}
                         type="password"
                         required
                     />
                 )}
                 <div className="flex flex-col items-center gap-2">
-                    {formType === 'LOGIN' && (
+                    {loginType === 'ADMIN' && (
                         <Link
                             className="text-sm text-[#017BAF] hover:underline"
                             href="/"
@@ -84,21 +89,14 @@ const Page: FC<PageProps> = () => {
                     )}
                     <button
                         className="text-sm text-[#017BAF] hover:underline"
-                        onClick={() =>
-                            setFormType(
-                                formType === 'LOGIN' ? 'REGISTER' : 'LOGIN'
-                            )
-                        }
+                        onClick={() => router.push('register')}
                     >
-                        {formType === 'LOGIN'
-                            ? "Don't have an account? Register"
-                            : 'Already have an account? Login'}
+                        Don&apos;t have an account? Register
                     </button>
                 </div>
                 <Button
                     type="submit"
-                    text={formType === 'LOGIN' ? 'Login' : 'Register'}
-                    onClick={() => {}}
+                    text={loginType === 'ADMIN' ? 'LOGIN' : 'Send OTP'}
                 />
             </form>
         </main>

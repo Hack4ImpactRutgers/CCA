@@ -3,7 +3,6 @@ import Image from 'next/image';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     text: string;
-    onClick: MouseEventHandler<HTMLButtonElement>;
     iconPath?: string;
 }
 

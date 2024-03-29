@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="63abdba7-266c-46a5-96d5-912a95078c1f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/auth_route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/auth_route.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,26 +30,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore_missing_gitignore": "true",
-    "last_opened_file_path": "/Users/ogreeni/Desktop/code/hack4impact/CCA",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "prettierjs.PrettierConfiguration.Package": "/Users/ogreeni/Desktop/code/hack4impact/CCA/frontend/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/Users/ogreeni/Desktop/code/hack4impact/CCA/backend/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ogreeni/Desktop/code/hack4impact/CCA&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/ogreeni/Desktop/code/hack4impact/CCA/frontend/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/ogreeni/Desktop/code/hack4impact/CCA/backend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/hooks" />
+      <recent name="$PROJECT_DIR$/frontend/src/hooks/auth" />
+      <recent name="$PROJECT_DIR$/frontend/src" />
+      <recent name="$PROJECT_DIR$/frontend/src/app/auth" />
       <recent name="$PROJECT_DIR$/src/components/admin" />
     </key>
   </component>
@@ -72,7 +77,14 @@
       <workItem from="1709051376404" duration="197000" />
       <workItem from="1709053001495" duration="1929000" />
       <workItem from="1709056617276" duration="2118000" />
-      <workItem from="1709326566227" duration="1136000" />
+      <workItem from="1709326566227" duration="6546000" />
+      <workItem from="1709614893759" duration="23000" />
+      <workItem from="1710600664666" duration="1614000" />
+      <workItem from="1710651589989" duration="2802000" />
+      <workItem from="1710870413258" duration="2773000" />
+      <workItem from="1710873459287" duration="8708000" />
+      <workItem from="1710949314974" duration="1293000" />
+      <workItem from="1710969009254" duration="22000" />
     </task>
     <servers />
   </component>

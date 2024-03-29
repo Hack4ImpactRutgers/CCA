@@ -1,5 +1,5 @@
-import express, { Request, Response } from 'express';
-import jwt, { Secret } from 'jsonwebtoken';
+import express, {Request, Response} from 'express';
+import jwt, {Secret} from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
 import OTP from '../schemas/otp_schema';
 import EmailToBeApproved from '../schemas/emails_schema';
@@ -35,17 +35,16 @@ const transport = nodemailer.createTransport({
  * already exists in the emailsToBeApproved collection and saving it if not.
  */
 router.post('/volunteer/signup', async (req, res) => {
-    const { email } = req.body;
-
+    const {email} = req.body;
     try {
         // Check if the email already exists in the emailsToBeApproved collection
-        const existingEmail = await EmailToBeApproved.findOne({ email });
+        const existingEmail = await EmailToBeApproved.findOne({email});
         if (existingEmail) {
             return res.status(400).json('Email already exists');
         }
 
         // Save the email in the emailsToBeApproved collection
-        const newEmail = new EmailToBeApproved({ email });
+        const newEmail = new EmailToBeApproved({email});
         await newEmail.save();
         res.json('Signup request sent');
     } catch (error) {
@@ -74,14 +73,14 @@ function generateOTP() {
  * and saving the OTP with a 5-minute expiration.
  */
 router.post('/otp/request-otp', async (req, res) => {
-    const { email } = req.body;
+    const {email} = req.body;
 
     console.log(`TRANSPORT: ${transport}`);
 
     // Check if an unexpired OTP already exists
     const existingOTP = await OTP.findOne({
         email,
-        expiresAt: { $gt: new Date() },
+        expiresAt: {$gt: new Date()},
     });
     if (existingOTP) {
         return res
@@ -100,7 +99,7 @@ router.post('/otp/request-otp', async (req, res) => {
         });
 
         // Save the OTP with an expiration of 5 minutes
-        const newOTP = new OTP({ email, otp });
+        const newOTP = new OTP({email, otp});
         await newOTP.save();
         res.json('Email sent');
     } catch (err) {
@@ -116,14 +115,13 @@ router.post('/otp/request-otp', async (req, res) => {
  * OTP, generates a JWT token upon success, and sends it to the browser as a cookie.
  */
 router.post('/volunteer/login', async (req, res) => {
-    const { email, otp } = req.body;
-
+    const {email, otp} = req.body;
     if (!email || !otp) {
         return res.status(400).json('Email and OTP required');
     }
 
     // Check if the provided OTP is valid and not expired
-    const validOTP = await OTP.findOne({ email, otp });
+    const validOTP = await OTP.findOne({email, otp});
     if (!validOTP) {
         return res.status(400).json('Invalid OTP');
     }
@@ -136,9 +134,9 @@ router.post('/volunteer/login', async (req, res) => {
             roles: ['volunteer'],
         },
         TOKEN_SECRET as Secret,
-        { expiresIn: '1h' }
+        {expiresIn: '1h'}
     ); // Set token expiry
-    res.cookie('token', token, { httpOnly: true });
+    res.cookie('token', token, {httpOnly: true});
     res.json('OTP verified, user logged in');
 });
 
@@ -159,14 +157,14 @@ router.post(
     '/admin/register',
     [auth, roles.admin],
     async (req: Request, res: Response) => {
-        const { name, email, password } = req.body;
+        const {name, email, password} = req.body;
 
         // validate request
         if (!name || !email || !password) {
             return res.status(400).json('Please enter all fields');
         }
 
-        const admin = await Admin.findOne({ email: email });
+        const admin = await Admin.findOne({email: email});
         if (admin) {
             return res.status(400).json('Admin already exists');
         }
@@ -188,7 +186,7 @@ router.post(
             .catch((err: any) => {
                 // Log the error and respond with a 400 status code
                 console.error(err);
-                res.status(400).send({ error: err.message });
+                res.status(400).send({error: err.message});
             });
     }
 );
@@ -200,10 +198,10 @@ router.post(
  * and sends it to the browser as a cookie.
  */
 router.post('/admin/login', async (req, res) => {
-    const { email, password } = req.body;
+    const {email, password} = req.body;
 
     // search for admin
-    const admin = await Admin.findOne({ email: email });
+    const admin = await Admin.findOne({email: email});
     if (!admin) {
         return res.status(400).json('Invalid email or password');
     }
@@ -222,10 +220,10 @@ router.post('/admin/login', async (req, res) => {
             roles: ['admin'],
         },
         TOKEN_SECRET as Secret,
-        { expiresIn: '1h' }
+        {expiresIn: '1h'}
     );
 
-    res.cookie('token', token, { httpOnly: true });
+    res.cookie('token', token, {httpOnly: true});
     res.status(200).json('Password verified, admin logged in');
 });
 
@@ -266,12 +264,11 @@ router.post('/admin/logout', (req, res) => {
  * }
  */
 router.post('/admin/forgot-password', async (req, res) => {
-    const { email } = req.body;
-
+    const {email} = req.body;
     if (!email) {
         return res.status(400).json('Email required');
     }
-    const user = await Admin.findOne({ email });
+    const user = await Admin.findOne({email});
     if (!user) {
         return res
             .status(200)
@@ -297,7 +294,7 @@ router.post('/admin/forgot-password', async (req, res) => {
             resetToken: resetToken,
         },
         TOKEN_SECRET as Secret,
-        { expiresIn: '24h' }
+        {expiresIn: '24h'}
     );
     const emailLink = `${process.env.FRONTEND_URL}/auth/admin/forgot-password?jwt=${token}`;
 
@@ -333,7 +330,7 @@ router.post('/admin/forgot-password', async (req, res) => {
  * }
  */
 router.post('/admin/verify-forgot-password', async (req, res) => {
-    const { token, password } = req.body;
+    const {token, password} = req.body;
 
     if (!token || !password) {
         return res.status(400).json('Token and password required');
@@ -362,7 +359,7 @@ router.post('/admin/verify-forgot-password', async (req, res) => {
     }
 
     // update the user's password
-    const user = await Admin.findOne({ email: request.email });
+    const user = await Admin.findOne({email: request.email});
     if (!user) {
         return res.status(400).json('User not found');
     }
