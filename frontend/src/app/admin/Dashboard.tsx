@@ -1,110 +1,64 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { API_BASE_URL } from '../globals';
+import Loading from '@/components/core/Loading';
+import { Button } from '@/components/core/Button';
 
 export default function Dashboard() {
+    const [query, setQuery] = useState<string>(''); // Search query
     const [data, setData] = useState<any>([]);
-
-    const FAKE_DATA = [
-        {
-            Client: 'Attentive Aashita',
-            'Site Location': 'Elgin',
-            'Delivery Status': 'Delivered',
-            'Client Details': 'Update',
-        },
-        {
-            Client: 'Magnificent Michelle',
-            'Site Location': 'Lockhart',
-            'Delivery Status': 'Not Delivered',
-            'Client Details': 'Update',
-        },
-        {
-            Client: 'Awesome Ayah',
-            'Site Location': 'McMahan',
-            'Delivery Status': 'Not Delivered',
-            'Client Details': 'Update',
-        },
-        {
-            Client: 'Amazing Alisha',
-            'Site Location': 'Trinity Lutheran',
-            'Delivery Status': 'Delivered',
-            'Client Details': 'OK',
-        },
-        {
-            Client: 'Phenomenal Pavan',
-            'Site Location': 'Camine',
-            'Delivery Status': 'Not Delivered',
-            'Client Details': 'OK',
-        },
-        {
-            Client: 'Intricate Ismaeel',
-            'Site Location': 'Camine',
-            'Delivery Status': 'Delivered',
-            'Client Details': 'OK',
-        },
-        {
-            Client: 'Jolly Joanne',
-            'Site Location': 'Lockhart',
-            'Delivery Status': 'Not Delivered',
-            'Client Details': 'OK',
-        },
-        {
-            Client: 'Superb Sai',
-            'Site Location': 'McMahan',
-            'Delivery Status': 'Not Delivered',
-            'Client Details': 'Update',
-        },
-        {
-            Client: 'Magical Mi Lan',
-            'Site Location': 'Trinity Lutheran',
-            'Delivery Status': 'Delivered',
-            'Client Details': 'OK',
-        },
-        {
-            Client: 'Observant Omri',
-            'Site Location': 'Flatonia',
-            'Delivery Status': 'Not Delivered',
-            'Client Details': 'Update',
-        },
-        {
-            Client: 'Meticulous Matthew',
-            'Site Location': 'Trinity Lutheran',
-            'Delivery Status': 'Delivered',
-            'Client Details': 'OK',
-        },
-        {
-            Client: 'Terrific Tiffany',
-            'Site Location': 'Elgin',
-            'Delivery Status': 'Delivered',
-            'Client Details': 'OK',
-        },
-    ];
+    const [filteredData, setFilteredData] = useState<any>([]);
+    const [selectedClientID, setSelectedClientID] = useState<any>(null);
 
     useEffect(() => {
-        // Replace this with appropriate API call when implementable
-        // fetch('https://someapi.org/list/clients')
-        //     .then(response => response.json())
-        //     .then(data => setData(data));
-        setData(FAKE_DATA);
+        fetch(API_BASE_URL + '/client/all')
+            .then(response => response.json())
+            .then(data => {
+                setData(data);
+                setFilteredData(data);
+            });
+
+        fetch(API_BASE_URL + '/order/all')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            });
     }, []);
 
-    // TODO: Replace with better looking loading screen
-    if (data.length === 0) return <div>Loading...</div>;
+    // Effect to filter data whenever the search query changes
+    useEffect(() => {
+        const result = data.filter((item : any) => 
+            Object.values(item).some((value : any) => 
+                value.toString().toLowerCase().includes(query.toLowerCase())
+            )
+        );
+        setFilteredData(result);
+    }, [query, data]);
 
-    const pets = ['Dog', 'Cat', 'Bird'].sort(); // Replace with actual logic later
-    const locations = Array.from(
-        new Set(data.map((row: any) => row['Site Location']))
-    ).sort();
+    if (data.length === 0) return <Loading />;
+
+    // const pets = ['Dog', 'Cat', 'Bird'].sort(); // Replace with actual logic later
+    // const locations = Array.from(
+    //     new Set(data.map((row: any) => row['Site Location']))
+    // ).sort();
+
+    if (selectedClientID != null) {
+        return <ClientDetailsPopup clientID={selectedClientID} setSelectedClientID={setSelectedClientID} />
+    }
 
     return (
         <div className="p-4">
             {/* Search area */}
             <div className="flex justify-between">
                 <input
-                    type="text"
+                    type="text" 
                     className="w-3/4 rounded-md"
                     placeholder="Search"
+                    value={query}
+                    onChange={e => setQuery(e.target.value)} 
                 />
-                <select className="w-[10%] rounded-md">
+                {/* Commenting these select boxes out for now since I don't have any information to make these work */}
+                {/* <select className="w-[10%] rounded-md">
                     <option selected>Filter by</option>
                     <optgroup label="Pet Type">
                         {pets.map((row: any, index: number) => (
@@ -121,62 +75,30 @@ export default function Dashboard() {
                 </select>
                 <select className="w-[10%] rounded-md">
                     <option>Sort by</option>
-                </select>
+                </select> */}
             </div>
 
             {/* Table of admin client data */}
             <table className="w-full border-separate border-spacing-2">
                 <thead>
                     <tr>
-                        {Object.keys(data[0]).map((key, index) => (
-                            <th className="text-tertiary" key={index}>
-                                {key}
-                            </th>
-                        ))}
+                        <th className="text-tertiary">Client</th>
+                        <th className="text-tertiary">Site Location</th>
+                        <th className="text-tertiary">Delivery Status</th>
+                        <th className="text-tertiary">Client Details</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((row: any, rowIndex: number) => (
+                    {filteredData.map((row: any, rowIndex: number) => (
                         <tr key={rowIndex}>
-                            {Object.entries(row).map(
-                                ([key, value], cellIndex) => {
-                                    let cellClass = '';
-
-                                    // Status Background Color
-                                    if (key !== 'Client Details')
-                                        cellClass = 'bg-[#F5F5F5]';
-                                    else if (key === 'Client Details') {
-                                        cellClass +=
-                                            value === 'Update'
-                                                ? 'bg-[#F16363]'
-                                                : 'bg-primary';
-                                        cellClass +=
-                                            ' text-white uppercase font-bold';
-                                    }
-
-                                    // Centered Columns
-                                    let centeredColumns = [
-                                        'Delivery Status',
-                                        'Client Details',
-                                    ];
-                                    if (centeredColumns.includes(key))
-                                        cellClass += ' text-center';
-
-                                    // Left Border for Client name column
-                                    if (key === 'Client')
-                                        cellClass +=
-                                            ' border-l-4 border-tertiary';
-
-                                    return (
-                                        <td
-                                            className={`rounded-md ${cellClass} px-2`}
-                                            key={cellIndex}
-                                        >
-                                            {value as string}
-                                        </td>
-                                    );
-                                }
-                            )}
+                            <td className="rounded-md px-3 py-1 bg-[#F5F5F5] border-l-4 border-tertiary">{row["name"]}</td>
+                            <td className="rounded-md px-3 py-1 bg-[#F5F5F5]">{row["region"]}</td>
+                            <td className="rounded-md px-3 py-1 bg-[#F5F5F5] text-center">?</td>
+                            <td className="rounded-md px-3 py-1 bg-[#F5F5F5] text-center hover:cursor-pointer"
+                                onClick={() => {
+                                    setSelectedClientID(row["_id"]);
+                                }}
+                            >Edit</td>
                         </tr>
                     ))}
                 </tbody>

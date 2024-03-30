@@ -103,7 +103,7 @@ const Page: FC<PageProps> = () => {
                     />
                 </div>
             </section>
-            <section className="pv-10 flex flex-col gap-5">
+            <section className="p-4 flex flex-col gap-5">
                 <SectionTitle text="Eligibility" />
                 <Collapsible
                     title="Congregate Meals"
