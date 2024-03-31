@@ -1,9 +1,9 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:testing-library/react",
-    "plugin:jest-dom/recommended",
-    "prettier",
-    "plugin:@tanstack/eslint-plugin-query/recommended"
-  ]
+    "extends": [
+        "next/core-web-vitals",
+        "plugin:testing-library/react",
+        "plugin:jest-dom/recommended",
+        "prettier",
+        "plugin:@tanstack/eslint-plugin-query/recommended"
+    ]
 }
