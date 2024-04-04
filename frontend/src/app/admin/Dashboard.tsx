@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { API_BASE_URL } from '../globals';
 import Loading from '@/components/core/Loading';
-import { Button } from '@/components/core/Button';
 import { ClientDetailsPopup } from '@/components/client/ClientDetailsPopup/ClientDetailsPopup';
 import { Client } from '@/types/backend';
 
