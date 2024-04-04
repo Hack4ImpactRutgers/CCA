@@ -5,7 +5,6 @@ import type { Metadata } from 'next';
 import { Navbar } from '@/components/core/Navbar';
 import './globals.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ClientDetailsPopup } from '@/components/client/ClientDetailsPopup/ClientDetailsPopup';
 import { Client } from '@/types/backend';
 
 // TODO: fix
@@ -55,12 +54,6 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
         <html lang="en">
             <body>
                 <QueryClientProvider client={queryClient}>
-                    <ClientDetailsPopup
-                        client={client}
-                        isEditing={true}
-                        onSubmit={() => {}}
-                        onClose={() => {}}
-                    />
                     <Navbar />
                     <div className="z-[100] mt-[112px]">{children}</div>
                 </QueryClientProvider>
