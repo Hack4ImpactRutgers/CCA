@@ -8,6 +8,7 @@ import Button from '../components/Button'
 import Assessment from './Assessment'
 import Submit from './Submit'
 import Confirmation from './Confirmation'
+import axios from 'axios'
 
 
 export default function DeliveryReportForm() { 
@@ -41,10 +42,51 @@ export default function DeliveryReportForm() {
     const [name,setName]=useState("")
     const [selectedDate,setSelectedDate] = useState(new Date())
     const [updated, setUpdated]=useState(false)
+    const [submitted, setSubmitted] = useState(false)
+
+    const handleClick = async () => {
+      try {
+        const requestBody = {
+          firstName,
+          lastName,
+          address,
+          city,
+          zipCode,
+          phone,
+          instructions,
+          pets: [
+            { name: petName1, foodType: foodType1, foodAmount: foodAmount1 },
+            { name: petName2, foodType: foodType2, foodAmount: foodAmount2 },
+            { name: petName3, foodType: foodType3, foodAmount: foodAmount3 }
+          ],
+          lasting,
+          cup,
+          scale,
+          comments,
+          supplies,
+          needs,
+          updated,
+          selectedDate,
+          orderId: "123456789", // Replace with actual orderId
+          volunteerId: "volunteer123" // Replace with actual volunteerId
+          
+        };
+    
+        const response = await axios.post('/your-api-endpoint', requestBody);
+        console.log(response.data); // Handle response if needed
+      } catch (error) {
+        console.error('Error submitting form:', error);
+      }
+    };
 
     useEffect(() => {
+        if(formPage=="Confirm"){
+          handleClick()
+        }
         window.scrollTo(0, 0)
     }, [formPage]);
+
+
     
     return (
       <div>
@@ -69,8 +111,8 @@ export default function DeliveryReportForm() {
               {formPage=="Pet1" && <Pet petName={petName1} setPetName={setPetName1} foodType={foodType1} setFoodType={setFoodType1} foodAmount={foodAmount1} setFoodAmount={setFoodAmount1}  setFormPage={setFormPage} num={1}/>}
               {formPage=="Pet2" && <Pet petName={petName2} setPetName={setPetName2} foodType={foodType2} setFoodType={setFoodType2} foodAmount={foodAmount2} setFoodAmount={setFoodAmount2}  setFormPage={setFormPage} num={2}/>}
               {formPage=="Pet3" && <Pet petName={petName3} setPetName={setPetName3} foodType={foodType3} setFoodType={setFoodType3} foodAmount={foodAmount3} setFoodAmount={setFoodAmount3}  setFormPage={setFormPage} num={3}/>}
-              {formPage === "Assessment" && <Assessment lasting={lasting} setLasting={setLasting} comments={comments} setComments={setComments} supplies={supplies} setSupplies={setSupplies} needs={needs} setNeeds={setNeeds} cup={cup} setCup={setCup} scale={scale} setScale={setScale} setFormPage={setFormPage} />}
-              {formPage=="Submit" && <Submit name={name} setName={setName} selectedDate={selectedDate} setSelectedDate={setSelectedDate} updated={updated} setUpdated={setUpdated} setFormPage={setFormPage}/>}
+              {formPage === "Assessment" && < Assessment lasting={lasting} setLasting={setLasting} comments={comments} setComments={setComments} supplies={supplies} setSupplies={setSupplies} needs={needs} setNeeds={setNeeds} cup={cup} setCup={setCup} scale={scale} setScale={setScale} setFormPage={setFormPage} />}
+              {formPage=="Submit" && < Submit name={name} setName={setName} selectedDate={selectedDate} setSelectedDate={setSelectedDate} updated={updated} setUpdated={setUpdated} setFormPage={setFormPage} submitted={submitted} setSubmitted={setSubmitted}/>}
         
           </div>
           

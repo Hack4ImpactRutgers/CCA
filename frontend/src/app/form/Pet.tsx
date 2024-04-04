@@ -27,10 +27,6 @@ function Pet(props: PetProps) {
           Type of Food
           </div>
           <TextInput value={props.foodType || ''} placeholder={''} onChange={props.setFoodType}/>
-
-
-     
-
       
 
       <div className='mt-5 '>

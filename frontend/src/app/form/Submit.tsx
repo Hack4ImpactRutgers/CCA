@@ -6,13 +6,16 @@ import TextInput from '../components/TextInput';
 import DatePicker from '../components/DatePicker';
 
 interface SubmitProps {
+
     name: string
     updated: boolean
     selectedDate: Date
+    submitted: boolean
     setName: Dispatch<SetStateAction<string>>;
     setUpdated: Dispatch<SetStateAction<boolean>>;
     setSelectedDate: Dispatch<SetStateAction<Date>>;
     setFormPage: Dispatch<SetStateAction<string>>;
+    setSubmitted: Dispatch<SetStateAction<boolean>>;
 
 }
 
