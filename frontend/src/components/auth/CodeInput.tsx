@@ -1,32 +1,30 @@
 'use client';
-import { FC, useEffect, useRef, useState } from 'react';
+import {
+    Dispatch,
+    FC,
+    SetStateAction,
+    useEffect,
+    useRef,
+    useState,
+} from 'react';
 
 interface CodeInputProps {
-    codeLength?: number;
+    codeLength: number;
+    code: string[];
+    setCode: Dispatch<SetStateAction<string[]>>;
 }
 
-const DEFAULT_CODE_LENGTH = 5;
-
 export const CodeInput: FC<CodeInputProps> = ({
-    codeLength = DEFAULT_CODE_LENGTH,
+    codeLength,
+    code,
+    setCode,
 }) => {
-    // State for the code input fields
-    const [code, setCode] = useState<string[]>(Array(codeLength).fill(''));
     const inputs = useRef<HTMLInputElement[]>([]);
 
     // Autofocus the first input when the component is mounted
     useEffect(() => {
         inputs.current[0].focus();
     }, []);
-
-    /**
-     * Function called when user has completed the code.
-     * @param typedCode [string] The code that the user typed/pasted in
-     */
-    function submitCode(typedCode: string) {
-        // Do what you want here with the completed code
-        console.log('Submitted code:', typedCode);
-    }
 
     /**
      * Handles user input into the code input fields.
@@ -52,10 +50,6 @@ export const CodeInput: FC<CodeInputProps> = ({
             if (e.currentTarget.tabIndex < codeLength - 1)
                 inputs.current[e.currentTarget.tabIndex + 1].focus();
         }
-        // If code is complete, submit it (you can remove this if you want to submit the code when the user clicks a button instead)
-        if (newCode.filter(Boolean).length === codeLength) {
-            submitCode(newCode.join(''));
-        }
         setCode(newCode);
     }
 
@@ -71,8 +65,6 @@ export const CodeInput: FC<CodeInputProps> = ({
             setCode(newCode);
             if (newCode.filter(Boolean).length === codeLength) {
                 inputs.current[codeLength - 1].focus();
-                // If you want the code to auto-submit when pasted, keep the below line. Otherwise, remove it.
-                submitCode(pastedData);
             }
         }
     }

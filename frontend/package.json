@@ -13,7 +13,10 @@
         "prettier:format": "prettier --write ."
     },
     "dependencies": {
-        "@tanstack/react-query": "^5.24.1",
+        "chart.js": "^4.4.2",
+        "html2canvas": "^1.4.1",
+        "jspdf": "^2.5.1",
+        "jspdf-autotable": "^3.8.2",
         "next": "14.0.4",
         "react": "^18",
         "react-dom": "^18"

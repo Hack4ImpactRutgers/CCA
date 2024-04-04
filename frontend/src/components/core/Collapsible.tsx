@@ -12,7 +12,7 @@ export const Collapsible: FC<Collapsible> = ({ title, content }) => {
 
     return (
         <div>
-            <div className="flex h-[73px] items-center justify-between bg-secondary">
+            <div className="flex h-[73px] items-center justify-between bg-secondary px-3">
                 <div className="text-2xl font-bold text-white">{title}</div>
                 <button onClick={() => setIsCollapsed(!isCollapsed)}>
                     <Image

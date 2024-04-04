@@ -10,6 +10,7 @@ interface LoginButton {
 export const LoginButton: FC<LoginButton> = ({ text, onClick, active }) => {
     return (
         <button
+            type="button"
             onClick={onClick}
             className={`w-[120px] transition-colors ${
                 active && 'font-semibold text-secondary'

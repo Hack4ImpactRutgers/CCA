@@ -6,34 +6,80 @@ import { LoginButton } from '@/components/auth/LoginButton';
 import { Button } from '@/components/core/Button';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useAdminLogin, useAdminSignUp, useRequestOTP } from '@/hooks/auth';
+import { useUserContext } from '@/context/userContext';
+import { CodeInput } from '@/components/auth/CodeInput';
 
 interface PageProps {}
+
+const OTP_CODE_LENGTH = 6;
 
 const Page: FC<PageProps> = () => {
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
     const [loginType, setLoginType] = useState<'ADMIN' | 'VOLUNTEER'>('ADMIN');
+    const [sentOTP, setSentOTP] = useState(false);
+    const [code, setCode] = useState<string[]>(Array(OTP_CODE_LENGTH).fill(''));
+    const { setAccountType } = useUserContext();
     const router = useRouter();
-
-    const { adminLogin, adminLoginSuccess, adminLoginError } = useAdminLogin();
-    const { requestOTP, requestOTPSuccess, requestOTPError } = useRequestOTP();
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
 
-        if (loginType === 'VOLUNTEER') {
-            if (emailInput) {
-                requestOTP({ email: emailInput });
-            }
-            return;
+        if (loginType === 'ADMIN') {
+            fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/admin/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: emailInput,
+                    password: passwordInput,
+                }),
+            })
+                .then((res) => {
+                    if (res.ok) {
+                        setAccountType('ADMIN');
+                        router.push('/');
+                    }
+                })
+                .catch((err) => console.error(err));
+        } else if (loginType === 'VOLUNTEER' && !sentOTP) {
+            fetch(
+                `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/otp/request-otp`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: emailInput }),
+                }
+            )
+                .then((res) => {
+                    if (res.ok) {
+                        setSentOTP(true);
+                    }
+                })
+                .catch((err) => console.error(err));
+        } else {
+            fetch(
+                `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/volunteer/login`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: emailInput,
+                        otp: code.join(''),
+                    }),
+                }
+            ).then((res) => {
+                if (res.ok) {
+                    setAccountType('VOLUNTEER');
+                    router.push('/');
+                }
+            });
         }
-
-        if (!emailInput || !passwordInput) {
-            return;
-        }
-
-        adminLogin({ email: emailInput, password: passwordInput });
     };
 
     return (
@@ -63,12 +109,14 @@ const Page: FC<PageProps> = () => {
                 <span className="text-3xl font-bold text-tertiary">
                     Account Login
                 </span>
-                <TextInput
-                    value={emailInput}
-                    onChange={setEmailInput}
-                    placeholder={'Email'}
-                    required
-                />
+                {!(loginType === 'VOLUNTEER' && sentOTP) && (
+                    <TextInput
+                        value={emailInput}
+                        onChange={setEmailInput}
+                        placeholder={'Email'}
+                        required
+                    />
+                )}
                 {loginType === 'ADMIN' && (
                     <TextInput
                         value={passwordInput}
@@ -77,6 +125,16 @@ const Page: FC<PageProps> = () => {
                         type="password"
                         required
                     />
+                )}
+                {loginType === 'VOLUNTEER' && sentOTP && (
+                    <div className="flex flex-col gap-5">
+                        <p>Enter the code sent to your email</p>
+                        <CodeInput
+                            code={code}
+                            setCode={setCode}
+                            codeLength={OTP_CODE_LENGTH}
+                        />
+                    </div>
                 )}
                 <div className="flex flex-col items-center gap-2">
                     {loginType === 'ADMIN' && (
@@ -88,6 +146,7 @@ const Page: FC<PageProps> = () => {
                         </Link>
                     )}
                     <button
+                        type="button"
                         className="text-sm text-[#017BAF] hover:underline"
                         onClick={() => router.push('register')}
                     >
@@ -96,7 +155,12 @@ const Page: FC<PageProps> = () => {
                 </div>
                 <Button
                     type="submit"
-                    text={loginType === 'ADMIN' ? 'LOGIN' : 'Send OTP'}
+                    text={
+                        loginType === 'ADMIN' ||
+                        (loginType === 'VOLUNTEER' && sentOTP)
+                            ? 'LOGIN'
+                            : 'Send OTP'
+                    }
                 />
             </form>
         </main>
