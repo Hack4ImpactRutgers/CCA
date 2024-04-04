@@ -6,46 +6,13 @@ import { InfoCard } from '@/components/home/InfoCard';
 import { Button } from '@/components/core/Button';
 import { Collapsible } from '@/components/core/Collapsible';
 import { FC } from 'react';
-import { ClientDetailsPopup } from '@/components/client/ClientDetailsPopup';
 import { Client } from '@/types/backend';
 
 interface PageProps {}
 
-const client: Client = {
-    id: 'abc123',
-    name: 'John Doe',
-    age: 35,
-    address: '123 Main St',
-    region: 'Urban',
-    pets: [
-        {
-            id: 'p1',
-            isActive: true,
-            animal: 'Dog',
-            vet: true,
-            food: {
-                kind: 'Dry',
-                lbs: 10,
-            },
-        },
-        {
-            id: 'p2',
-            isActive: true,
-            animal: 'Cat',
-            vet: false,
-            food: {
-                kind: 'Wet',
-                lbs: 5,
-            },
-        },
-    ],
-};
-
-// TODO: add HTML semantic elements.
 const Page: FC<PageProps> = () => {
     return (
         <main className="flex flex-col gap-14 leading-10" data-testid="main">
-            <ClientDetailsPopup isEditing={true} client={client} />
             <section className="relative h-[515px] w-full">
                 <Image
                     src="/images/animals.jpeg"
