@@ -2,12 +2,13 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useUserContext } from '@/context/userContext';
 
 export const Navbar: FC = () => {
     const pathname = usePathname();
     const { accountType, setAccountType } = useUserContext();
+    const router = useRouter();
 
     const logout = () => {
         fetch(
@@ -21,6 +22,7 @@ export const Navbar: FC = () => {
             .then((res) => {
                 if (res.ok) {
                     setAccountType('');
+                    router.push('/');
                 }
             })
             .catch((err) => console.error(err));
