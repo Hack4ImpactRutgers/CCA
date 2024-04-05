@@ -3,7 +3,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import {Button} from '../../components/core/Button'
 import {TextInput} from '../../components/core/TextInput'
-import { Client } from '@/types/backend';
+
 
 interface ClientProps {
   first: string
