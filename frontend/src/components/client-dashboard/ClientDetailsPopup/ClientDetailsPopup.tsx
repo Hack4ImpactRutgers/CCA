@@ -27,7 +27,7 @@ export const ClientDetailsPopup: FC<ClientDetailsPopupProps> = ({
 
     return (
         <div
-            className="animate-in slide-in-from-bottom-40 fixed inset-0 z-50 flex h-screen items-center justify-center bg-black bg-opacity-80"
+            className="fixed inset-0 z-50 flex h-screen items-center justify-center bg-black bg-opacity-80 animate-in slide-in-from-bottom-40"
             onClick={onClose}
         >
             <div className="relative" onClick={(e) => e.stopPropagation()}>

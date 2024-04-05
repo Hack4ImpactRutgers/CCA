@@ -1,3 +1,4 @@
+'use client';
 import {
     createContext,
     Dispatch,
@@ -18,9 +19,15 @@ interface UserProviderProps extends PropsWithChildren {}
 export const UserContext = createContext<UserContext | null>(null);
 
 export const UserProvider: FC<PropsWithChildren> = ({ children }) => {
-    const [accountType, setAccountType] = useState<UserContext['accountType']>(
-        localStorage.getItem('accountType') as UserContext['accountType']
-    );
+    const savedAccountType =
+        typeof window !== 'undefined'
+            ? (localStorage.getItem(
+                  'accountType'
+              ) as UserContext['accountType'])
+            : '';
+
+    const [accountType, setAccountType] =
+        useState<UserContext['accountType']>(savedAccountType);
 
     return (
         <UserContext.Provider
