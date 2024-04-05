@@ -19,6 +19,7 @@
         "jspdf-autotable": "^3.8.2",
         "next": "14.0.4",
         "react": "^18",
+        "react-datepicker": "^6.6.0",
         "react-dom": "^18"
     },
     "devDependencies": {
@@ -29,6 +30,7 @@
         "@types/jest": "^29.5.11",
         "@types/node": "^20",
         "@types/react": "^18",
+        "@types/react-datepicker": "^6.2.0",
         "@types/react-dom": "^18",
         "autoprefixer": "^10.0.1",
         "concurrently": "^8.2.2",
