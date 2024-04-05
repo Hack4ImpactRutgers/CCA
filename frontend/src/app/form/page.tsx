@@ -126,7 +126,7 @@ export default function DeliveryReportForm() {
         }
 
         try {
-            const response = await fetch(`${API_BASE_URL}/delivery`, {
+            const response = await fetch(`${API_BASE_URL}/deliveries`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
