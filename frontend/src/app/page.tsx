@@ -44,11 +44,11 @@ const client: Client = {
 const Page: FC<PageProps> = () => {
     return (
         <>
-            <ClientDetailsPopup
-                client={client}
-                onSubmit={() => {}}
-                onClose={() => {}}
-            />
+            {/*<ClientDetailsPopup*/}
+            {/*    client={client}*/}
+            {/*    onSubmit={() => {}}*/}
+            {/*    onClose={() => {}}*/}
+            {/*/>*/}
             <main
                 className="flex flex-col gap-14 leading-10"
                 data-testid="main"

@@ -23,6 +23,9 @@ export const ClientDetailsPopup: FC<ClientDetailsPopupProps> = ({
 
     useEffect(() => {
         document.body.style.overflow = 'hidden';
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
     }, []);
 
     return (
