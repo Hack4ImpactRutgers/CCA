@@ -1,9 +1,9 @@
-import { Client, Pet } from '@/types/backend';
+import { Pet } from '@/types/backend';
 import { FC, useState } from 'react';
 import { Input } from '@/components/client-dashboard/ClientDetailsPopup/components/Input';
 
 interface PetTabContentProps {
-    data: Client;
+    data: Pet;
     isEditing?: boolean;
 }
 
