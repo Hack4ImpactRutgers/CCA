@@ -1,9 +1,9 @@
-import { Pet } from '@/types/backend';
+import { Client, Pet } from '@/types/backend';
 import { FC, useState } from 'react';
-import { Input } from '@/components/client/ClientDetailsPopup/components/Input';
+import { Input } from '@/components/client-dashboard/ClientDetailsPopup/components/Input';
 
 interface PetTabContentProps {
-    data: Pet;
+    data: Client;
     isEditing?: boolean;
 }
 
@@ -20,11 +20,11 @@ export const PetTabContent: FC<PetTabContentProps> = ({
 
     return (
         <>
-            <div>
+            <div className="mb-[50px]">
                 <p className="font-bold">Name</p>
                 <p>Poppy, {data.animal}</p>
             </div>
-            <div className="flex flex-wrap gap-x-[150px]">
+            <div className="mb-[50px] flex flex-wrap gap-x-[150px] gap-y-[50px]">
                 <div>
                     <p className="font-bold">Age</p>
                     {isEditing ? (
@@ -53,21 +53,21 @@ export const PetTabContent: FC<PetTabContentProps> = ({
                         <p>{data.food.lbs}</p>
                     )}
                 </div>
-                <div>
-                    <p className="font-bold">Color / Description</p>
-                    {isEditing ? (
-                        <Input
-                            value={colorDescriptionInput}
-                            onChange={(e) =>
-                                setColorDescriptionInput(e.target.value)
-                            }
-                        />
-                    ) : (
-                        <p>DESCRIPTION</p>
-                    )}
-                </div>
             </div>
-            <div>
+            <div className="mb-[50px]">
+                <p className="font-bold">Color / Description</p>
+                {isEditing ? (
+                    <Input
+                        value={colorDescriptionInput}
+                        onChange={(e) =>
+                            setColorDescriptionInput(e.target.value)
+                        }
+                    />
+                ) : (
+                    <p>DESCRIPTION</p>
+                )}
+            </div>
+            <div className="mb-[50px]">
                 <p className="font-bold">Diet</p>
                 {isEditing ? (
                     <Input
@@ -78,7 +78,7 @@ export const PetTabContent: FC<PetTabContentProps> = ({
                     <p>DIET</p>
                 )}
             </div>
-            <div>
+            <div className="mb-[50px]">
                 <p className="font-bold">Brand of Food</p>
                 {isEditing ? (
                     <Input
