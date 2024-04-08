@@ -108,7 +108,7 @@ export default function Dashboard() {
         }
 
         setFilteredData(result);
-    }, [query, filter, data, sortBy]);
+    }, [query, filter, data, sortBy, orders]);
 
     const onPopupClose = () => setSelectedClient(null);
     const onPopupSubmit = (updatedClient: Client) => {

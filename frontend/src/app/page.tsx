@@ -11,44 +11,9 @@ import { ClientDetailsPopup } from '@/components/client-dashboard/ClientDetailsP
 
 interface PageProps {}
 
-const client: Client = {
-    id: 'abc123',
-    name: 'John Doe',
-    age: 35,
-    address: '123 Main St',
-    region: 'Urban',
-    pets: [
-        {
-            id: 'p1',
-            isActive: true,
-            animal: 'Dog',
-            vet: true,
-            food: {
-                kind: 'Dry',
-                lbs: 10,
-            },
-        },
-        {
-            id: 'p2',
-            isActive: true,
-            animal: 'Cat',
-            vet: false,
-            food: {
-                kind: 'Wet',
-                lbs: 5,
-            },
-        },
-    ],
-};
-
 const Page: FC<PageProps> = () => {
     return (
         <>
-            {/*<ClientDetailsPopup*/}
-            {/*    client={client}*/}
-            {/*    onSubmit={() => {}}*/}
-            {/*    onClose={() => {}}*/}
-            {/*/>*/}
             <main
                 className="flex flex-col gap-14 leading-10"
                 data-testid="main"

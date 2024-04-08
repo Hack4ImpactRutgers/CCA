@@ -1,15 +1,20 @@
-import { Pet } from '@/types/backend';
-import { FC, useState } from 'react';
+import { Client, Pet } from '@/types/backend';
+import { Dispatch, FC, SetStateAction, useState } from 'react';
 import { Input } from '@/components/client-dashboard/ClientDetailsPopup/components/Input';
+import { deepClone } from '@/util/objects';
 
 interface PetTabContentProps {
     data: Pet;
     isEditing?: boolean;
+    onChange: Dispatch<SetStateAction<Client>>;
+    index: number;
 }
 
 export const PetTabContent: FC<PetTabContentProps> = ({
     data,
     isEditing = false,
+    onChange,
+    index,
 }) => {
     const [ageInput, setAgeInput] = useState(0);
     const [weightInput, setWeightInput] = useState(0);
@@ -22,7 +27,9 @@ export const PetTabContent: FC<PetTabContentProps> = ({
         <>
             <div className="mb-[50px]">
                 <p className="font-bold">Name</p>
-                <p>Poppy, {data.animal}</p>
+                <p>
+                    {data.name}, {data.animal}
+                </p>
             </div>
             <div className="mb-[50px] flex flex-wrap gap-x-[150px] gap-y-[50px]">
                 <div>
@@ -32,11 +39,17 @@ export const PetTabContent: FC<PetTabContentProps> = ({
                             type="number"
                             value={ageInput}
                             onChange={(e) =>
-                                setAgeInput(parseInt(e.target.value))
+                                onChange((prev) => {
+                                    const copy = deepClone(prev);
+                                    copy.pets[index].age = parseInt(
+                                        e.target.value
+                                    );
+                                    return copy;
+                                })
                             }
                         />
                     ) : (
-                        <p>5 years old</p>
+                        <p>{data.age} years old</p>
                     )}
                 </div>
                 <div>
@@ -46,11 +59,15 @@ export const PetTabContent: FC<PetTabContentProps> = ({
                             type="number"
                             value={weightInput}
                             onChange={(e) =>
-                                setWeightInput(parseInt(e.target.value))
+                                onChange((prev) => {
+                                    const copy = deepClone(prev);
+                                    copy.pets[index].weight = e.target.value;
+                                    return copy;
+                                })
                             }
                         />
                     ) : (
-                        <p>{data.food.lbs}</p>
+                        <p>{data.weight}</p>
                     )}
                 </div>
             </div>
@@ -60,11 +77,15 @@ export const PetTabContent: FC<PetTabContentProps> = ({
                     <Input
                         value={colorDescriptionInput}
                         onChange={(e) =>
-                            setColorDescriptionInput(e.target.value)
+                            onChange((prev) => {
+                                const copy = deepClone(prev);
+                                copy.pets[index].description = e.target.value;
+                                return copy;
+                            })
                         }
                     />
                 ) : (
-                    <p>DESCRIPTION</p>
+                    <p>{data.description}</p>
                 )}
             </div>
             <div className="mb-[50px]">
@@ -72,10 +93,16 @@ export const PetTabContent: FC<PetTabContentProps> = ({
                 {isEditing ? (
                     <Input
                         value={dietInput}
-                        onChange={(e) => setDietInput(e.target.value)}
+                        onChange={(e) => {
+                            onChange((prev) => {
+                                const copy = deepClone(prev);
+                                copy.pets[index].diet = e.target.value;
+                                return copy;
+                            });
+                        }}
                     />
                 ) : (
-                    <p>DIET</p>
+                    <p>{data.diet}</p>
                 )}
             </div>
             <div className="mb-[50px]">
@@ -83,7 +110,13 @@ export const PetTabContent: FC<PetTabContentProps> = ({
                 {isEditing ? (
                     <Input
                         value={foodBrandInput}
-                        onChange={(e) => setFoodBrandInput(e.target.value)}
+                        onChange={(e) => {
+                            onChange((prev) => {
+                                const copy = deepClone(prev);
+                                copy.pets[index].food.kind = e.target.value;
+                                return copy;
+                            });
+                        }}
                     />
                 ) : (
                     <p>{data.food.kind}</p>
@@ -95,7 +128,13 @@ export const PetTabContent: FC<PetTabContentProps> = ({
                     <Input
                         value={foodPerMonthInput}
                         onChange={(e) =>
-                            setFoodPerMonthInput(parseInt(e.target.value))
+                            onChange((prev) => {
+                                const copy = deepClone(prev);
+                                copy.pets[index].food.lbs = parseInt(
+                                    e.target.value
+                                );
+                                return copy;
+                            })
                         }
                     />
                 ) : (

@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63abdba7-266c-46a5-96d5-912a95078c1f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/util/objects.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/client-dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/client-dashboard/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/core/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/core/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/client-dashboard/ClientDetailsPopup/ClientDetailsPopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/client-dashboard/ClientDetailsPopup/ClientDetailsPopup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/client-dashboard/ClientDetailsPopup/components/DetailsTabContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/client-dashboard/ClientDetailsPopup/components/DetailsTabContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/client-dashboard/ClientDetailsPopup/components/PetTabContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/client-dashboard/ClientDetailsPopup/components/PetTabContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/types/backend.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/types/backend.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +101,9 @@
       <workItem from="1712242311142" duration="302000" />
       <workItem from="1712255678645" duration="9884000" />
       <workItem from="1712266342975" duration="3409000" />
-      <workItem from="1712346837606" duration="2115000" />
+      <workItem from="1712346837606" duration="3335000" />
+      <workItem from="1712358077939" duration="45000" />
+      <workItem from="1712544999604" duration="2989000" />
     </task>
     <servers />
   </component>
