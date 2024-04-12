@@ -909,7 +909,7 @@ export default function Dashboard() {
     ];
 
     useEffect(() => {
-        fetch(API_BASE_URL + '/orders/all', {
+        fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/orders/all', {
             credentials: 'include',
         })
             .then((response) => response.json())
