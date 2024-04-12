@@ -103,39 +103,33 @@ export default function InformationForm() {
                     animal: petType1,
                     name: petName1,
                     age: age1,
-                    description: color1,
-                    weight: weight1,
-                    diet: eats1,
+                    description: `${color1}, ${breed1}, ${age1}, ${weight1}, ${howLong1}, ${spendTime1}, ${eats1}, ${medications1}, ${health1}, ${extra1}`,
                 },
                 {},
             ],
             needsUpdate: false,
         };
-
+    
         if (petName2.trim() !== '') {
             clientData.pets.push({
                 isActive: true,
                 animal: petType2,
                 name: petName2,
                 age: age2,
-                description: color2,
-                weight: weight2,
-                diet: eats2,
+                description: `${color2}, ${breed2}, ${age2}, ${weight2}, ${howLong2}, ${spendTime2}, ${eats2}, ${medications2}, ${health2}, ${extra2}`,
             });
         }
-
+    
         if (petName3.trim() !== '') {
             clientData.pets.push({
                 isActive: true,
                 animal: petType3,
                 name: petName3,
                 age: age3,
-                description: color3,
-                weight: weight3,
-                diet: eats3,
+                description: `${color3}, ${breed3}, ${age3}, ${weight3}, ${howLong3}, ${spendTime3}, ${eats3}, ${medications3}, ${health3}, ${extra3}`,
             });
         }
-
+    
         try {
             const response = await fetch(`${API_BASE_URL}/client`, {
                 method: 'POST',
@@ -144,10 +138,10 @@ export default function InformationForm() {
                 },
                 body: JSON.stringify(clientData),
             });
-
+    
             if (response.ok) {
                 const data = await response.json();
-
+    
                 console.log('Client added successfully:', data);
             } else {
                 console.error('Failed to add client:', response.statusText);
@@ -156,6 +150,7 @@ export default function InformationForm() {
             console.error('Error adding client:', error);
         }
     };
+    
 
     useEffect(() => {
         if (formPage == 'Confirm') {
@@ -173,7 +168,7 @@ export default function InformationForm() {
                             className={`text-left ${
                                 formPage == 'Client' &&
                                 'font-bold text-secondary'
-                            }`}
+                            }`}onClick={() => setFormPage('Client')}
                         >
                             Client
                         </button>
@@ -181,28 +176,28 @@ export default function InformationForm() {
                             className={`text-left ${
                                 formPage == 'Information' &&
                                 'font-bold text-secondary'
-                            }`}
+                            }`}onClick={() => setFormPage('Information')}
                         >
                             Pet Information
                         </button>
                         <button
                             className={`text-left ${
                                 formPage == 'Pet1' && 'font-bold text-secondary'
-                            }`}
+                            }`}onClick={() => setFormPage('Pet1')}
                         >
                             Pet 1
                         </button>
                         <button
                             className={`text-left ${
                                 formPage == 'Pet2' && 'font-bold text-secondary'
-                            }`}
+                            }`}onClick={() => setFormPage('Pet2')}
                         >
                             Pet 2
                         </button>
                         <button
                             className={`text-left ${
                                 formPage == 'Pet3' && 'font-bold text-secondary'
-                            }`}
+                            }`}onClick={() => setFormPage('Pet3')}
                         >
                             Pet 3
                         </button>
