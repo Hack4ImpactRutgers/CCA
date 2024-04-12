@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useUserContext } from '@/context/userContext';
 import { CodeInput } from '@/components/auth/CodeInput';
+import { cookies } from 'next/headers';
 
 interface PageProps {}
 
@@ -35,6 +36,7 @@ const Page: FC<PageProps> = () => {
                     email: emailInput,
                     password: passwordInput,
                 }),
+                credentials: 'include',
             })
                 .then((res) => {
                     if (res.ok) {

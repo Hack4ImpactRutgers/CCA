@@ -909,7 +909,9 @@ export default function Dashboard() {
     ];
 
     useEffect(() => {
-        fetch(API_BASE_URL + '/orders/all')
+        fetch(API_BASE_URL + '/orders/all', {
+            credentials: 'include',
+        })
             .then((response) => response.json())
             .then((orderData) => {
                 setOrderData(filterBySuccessfulStatus(orderData));
