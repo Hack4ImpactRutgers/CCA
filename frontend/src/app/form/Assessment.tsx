@@ -23,7 +23,6 @@ interface AssessmentProps {
 function Assessment(props: AssessmentProps) {
     const handleCupChange = () => {
         props.setCup(!props.cup);
-        console.log(props.cup);
     };
 
     const handleScaleChange = () => {
