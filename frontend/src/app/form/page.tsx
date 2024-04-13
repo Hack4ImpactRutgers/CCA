@@ -131,6 +131,7 @@ export default function DeliveryReportForm() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                credentials: "include",
                 body: JSON.stringify(deliveryReportData),
             });
 
