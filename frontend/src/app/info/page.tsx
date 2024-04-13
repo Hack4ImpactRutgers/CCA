@@ -111,7 +111,7 @@ export default function InformationForm() {
             ],
             needsUpdate: false,
         };
-    
+
         if (petName2.trim() !== '') {
             clientData.pets.push({
                 isActive: true,
@@ -123,7 +123,7 @@ export default function InformationForm() {
                 diet: eats2,
             });
         }
-    
+
         if (petName3.trim() !== '') {
             clientData.pets.push({
                 isActive: true,
@@ -135,20 +135,20 @@ export default function InformationForm() {
                 diet: eats3,
             });
         }
-    
+
         try {
             const response = await fetch(`${API_BASE_URL}/client`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                credentials: "include",
+                credentials: 'include',
                 body: JSON.stringify(clientData),
             });
-    
+
             if (response.ok) {
                 const data = await response.json();
-    
+
                 console.log('Client added successfully:', data);
             } else {
                 console.error('Failed to add client:', response.statusText);
@@ -157,7 +157,6 @@ export default function InformationForm() {
             console.error('Error adding client:', error);
         }
     };
-    
 
     useEffect(() => {
         if (formPage == 'Confirm') {
@@ -175,7 +174,8 @@ export default function InformationForm() {
                             className={`text-left ${
                                 formPage == 'Client' &&
                                 'font-bold text-secondary'
-                            }`}onClick={() => setFormPage('Client')}
+                            }`}
+                            onClick={() => setFormPage('Client')}
                         >
                             Client
                         </button>
@@ -183,28 +183,32 @@ export default function InformationForm() {
                             className={`text-left ${
                                 formPage == 'Information' &&
                                 'font-bold text-secondary'
-                            }`}onClick={() => setFormPage('Information')}
+                            }`}
+                            onClick={() => setFormPage('Information')}
                         >
                             Pet Information
                         </button>
                         <button
                             className={`text-left ${
                                 formPage == 'Pet1' && 'font-bold text-secondary'
-                            }`}onClick={() => setFormPage('Pet1')}
+                            }`}
+                            onClick={() => setFormPage('Pet1')}
                         >
                             Pet 1
                         </button>
                         <button
                             className={`text-left ${
                                 formPage == 'Pet2' && 'font-bold text-secondary'
-                            }`}onClick={() => setFormPage('Pet2')}
+                            }`}
+                            onClick={() => setFormPage('Pet2')}
                         >
                             Pet 2
                         </button>
                         <button
                             className={`text-left ${
                                 formPage == 'Pet3' && 'font-bold text-secondary'
-                            }`}onClick={() => setFormPage('Pet3')}
+                            }`}
+                            onClick={() => setFormPage('Pet3')}
                         >
                             Pet 3
                         </button>

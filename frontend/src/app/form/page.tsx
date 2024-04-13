@@ -131,7 +131,7 @@ export default function DeliveryReportForm() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                credentials: "include",
+                credentials: 'include',
                 body: JSON.stringify(deliveryReportData),
             });
 
@@ -184,7 +184,8 @@ export default function DeliveryReportForm() {
                                 className={`text-left ${
                                     formPage == 'Client' &&
                                     'font-bold text-secondary'
-                                }`}onClick={() => setFormPage('Client')}
+                                }`}
+                                onClick={() => setFormPage('Client')}
                             >
                                 Client
                             </button>
@@ -192,7 +193,8 @@ export default function DeliveryReportForm() {
                                 className={`text-left ${
                                     formPage == 'Pet1' &&
                                     'font-bold text-secondary'
-                                }`}onClick={() => setFormPage('Pet1')}
+                                }`}
+                                onClick={() => setFormPage('Pet1')}
                             >
                                 Pet 1
                             </button>
@@ -200,7 +202,8 @@ export default function DeliveryReportForm() {
                                 className={`text-left ${
                                     formPage == 'Pet2' &&
                                     'font-bold text-secondary'
-                                }`}onClick={() => setFormPage('Pet2')}
+                                }`}
+                                onClick={() => setFormPage('Pet2')}
                             >
                                 Pet 2
                             </button>
@@ -208,7 +211,8 @@ export default function DeliveryReportForm() {
                                 className={`text-left ${
                                     formPage == 'Pet3' &&
                                     'font-bold text-secondary'
-                                }`}onClick={() => setFormPage('Pet3')}
+                                }`}
+                                onClick={() => setFormPage('Pet3')}
                             >
                                 Pet 3
                             </button>
@@ -216,7 +220,8 @@ export default function DeliveryReportForm() {
                                 className={`text-left ${
                                     formPage == 'Assessment' &&
                                     'font-bold text-secondary'
-                                }`}onClick={() => setFormPage('Assessment')}
+                                }`}
+                                onClick={() => setFormPage('Assessment')}
                             >
                                 Needs Assessment
                             </button>
@@ -224,7 +229,8 @@ export default function DeliveryReportForm() {
                                 className={`text-left ${
                                     formPage == 'Submit' &&
                                     'font-bold text-secondary'
-                                }`}onClick={() => setFormPage('Submit')}
+                                }`}
+                                onClick={() => setFormPage('Submit')}
                             >
                                 Submit
                             </button>
