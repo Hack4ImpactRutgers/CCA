@@ -103,7 +103,7 @@ export default function InformationForm() {
                     animal: petType1,
                     name: petName1,
                     age: age1,
-                    description: color1,
+                    description: `Color: ${color1}, Breed: ${breed1}, Age: ${age1}, How long owned: ${howLong1}, Time spent per day: ${spendTime1}, Medications: ${medications1}, Health condition: ${health1}, Extra notes: ${extra1}, Flea: ${flea1}, Heartworm: ${heartworm1}, Vaccinated: ${vaccinated1}, Sprayed: ${sprayed1}, Take: ${take1}`,
                     weight: weight1,
                     diet: eats1,
                 },
@@ -111,31 +111,31 @@ export default function InformationForm() {
             ],
             needsUpdate: false,
         };
-
+    
         if (petName2.trim() !== '') {
             clientData.pets.push({
                 isActive: true,
                 animal: petType2,
                 name: petName2,
                 age: age2,
-                description: color2,
+                description: `Color: ${color2}, Breed: ${breed2}, Age: ${age2}, How long owned: ${howLong2}, Time spent per day: ${spendTime2}, Medications: ${medications2}, Health condition: ${health2}, Extra notes: ${extra2}, Flea: ${flea2}, Heartworm: ${heartworm2}, Vaccinated: ${vaccinated2}, Sprayed: ${sprayed2}, Take: ${take2}`,
                 weight: weight2,
                 diet: eats2,
             });
         }
-
+    
         if (petName3.trim() !== '') {
             clientData.pets.push({
                 isActive: true,
                 animal: petType3,
                 name: petName3,
                 age: age3,
-                description: color3,
+                description: `Color: ${color3}, Breed: ${breed3}, Age: ${age3}, How long owned: ${howLong3}, Time spent per day: ${spendTime3}, Medications: ${medications3}, Health condition: ${health3}, Extra notes: ${extra3}, Flea: ${flea3}, Heartworm: ${heartworm3}, Vaccinated: ${vaccinated3}, Sprayed: ${sprayed3}, Take: ${take3}`,
                 weight: weight3,
                 diet: eats3,
             });
         }
-
+    
         try {
             const response = await fetch(`${API_BASE_URL}/client`, {
                 method: 'POST',
@@ -144,10 +144,10 @@ export default function InformationForm() {
                 },
                 body: JSON.stringify(clientData),
             });
-
+    
             if (response.ok) {
                 const data = await response.json();
-
+    
                 console.log('Client added successfully:', data);
             } else {
                 console.error('Failed to add client:', response.statusText);
@@ -156,6 +156,7 @@ export default function InformationForm() {
             console.error('Error adding client:', error);
         }
     };
+    
 
     useEffect(() => {
         if (formPage == 'Confirm') {
@@ -173,7 +174,7 @@ export default function InformationForm() {
                             className={`text-left ${
                                 formPage == 'Client' &&
                                 'font-bold text-secondary'
-                            }`}
+                            }`}onClick={() => setFormPage('Client')}
                         >
                             Client
                         </button>
@@ -181,28 +182,28 @@ export default function InformationForm() {
                             className={`text-left ${
                                 formPage == 'Information' &&
                                 'font-bold text-secondary'
-                            }`}
+                            }`}onClick={() => setFormPage('Information')}
                         >
                             Pet Information
                         </button>
                         <button
                             className={`text-left ${
                                 formPage == 'Pet1' && 'font-bold text-secondary'
-                            }`}
+                            }`}onClick={() => setFormPage('Pet1')}
                         >
                             Pet 1
                         </button>
                         <button
                             className={`text-left ${
                                 formPage == 'Pet2' && 'font-bold text-secondary'
-                            }`}
+                            }`}onClick={() => setFormPage('Pet2')}
                         >
                             Pet 2
                         </button>
                         <button
                             className={`text-left ${
                                 formPage == 'Pet3' && 'font-bold text-secondary'
-                            }`}
+                            }`}onClick={() => setFormPage('Pet3')}
                         >
                             Pet 3
                         </button>

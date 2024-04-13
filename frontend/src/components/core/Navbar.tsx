@@ -17,6 +17,7 @@ export const Navbar: FC = () => {
             }/auth/${accountType.toLowerCase()}/logout`,
             {
                 method: 'POST',
+                credentials: 'include',
             }
         )
             .then((res) => {
