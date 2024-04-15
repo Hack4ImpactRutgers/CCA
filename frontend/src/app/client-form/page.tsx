@@ -100,13 +100,19 @@ export default function InformationForm() {
                 {
                     isActive: true,
                     animal: petType1,
+                    vet: false,
+                    food: {
+                        kind: eats1,
+                        lbs: weight1,
+                    },
+                    
                     name: petName1,
                     age: age1,
                     description: `Color: ${color1}, Breed: ${breed1}, Age: ${age1}, How long owned: ${howLong1}, Time spent per day: ${spendTime1}, Medications: ${medications1}, Health condition: ${health1}, Extra notes: ${extra1}, Flea: ${flea1}, Heartworm: ${heartworm1}, Vaccinated: ${vaccinated1}, Sprayed: ${sprayed1}, Take: ${take1}`,
                     weight: weight1,
                     diet: eats1,
                 },
-                {},
+                
             ],
             needsUpdate: false,
         };
@@ -115,6 +121,11 @@ export default function InformationForm() {
             clientData.pets.push({
                 isActive: true,
                 animal: petType2,
+                vet: false,
+                food: {
+                    kind: eats2,
+                    lbs: weight2,
+                },
                 name: petName2,
                 age: age2,
                 description: `Color: ${color2}, Breed: ${breed2}, Age: ${age2}, How long owned: ${howLong2}, Time spent per day: ${spendTime2}, Medications: ${medications2}, Health condition: ${health2}, Extra notes: ${extra2}, Flea: ${flea2}, Heartworm: ${heartworm2}, Vaccinated: ${vaccinated2}, Sprayed: ${sprayed2}, Take: ${take2}`,
@@ -127,6 +138,11 @@ export default function InformationForm() {
             clientData.pets.push({
                 isActive: true,
                 animal: petType3,
+                vet: false,
+                food: {
+                    kind: eats3,
+                    lbs: weight3,
+                },
                 name: petName3,
                 age: age3,
                 description: `Color: ${color3}, Breed: ${breed3}, Age: ${age3}, How long owned: ${howLong3}, Time spent per day: ${spendTime3}, Medications: ${medications3}, Health condition: ${health3}, Extra notes: ${extra3}, Flea: ${flea3}, Heartworm: ${heartworm3}, Vaccinated: ${vaccinated3}, Sprayed: ${sprayed3}, Take: ${take3}`,
