@@ -8,7 +8,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useUserContext } from '@/context/userContext';
 import { CodeInput } from '@/components/auth/CodeInput';
-import { cookies } from 'next/headers';
 
 interface PageProps {}
 
@@ -142,18 +141,11 @@ const Page: FC<PageProps> = () => {
                     {loginType === 'ADMIN' && (
                         <Link
                             className="text-sm text-[#017BAF] hover:underline"
-                            href="/"
+                            href="/auth/admin/forgot-password"
                         >
-                            Forgot Username or Password?
+                            Forgot Password?
                         </Link>
                     )}
-                    <button
-                        type="button"
-                        className="text-sm text-[#017BAF] hover:underline"
-                        onClick={() => router.push('register')}
-                    >
-                        Don&apos;t have an account? Register
-                    </button>
                 </div>
                 <Button
                     type="submit"

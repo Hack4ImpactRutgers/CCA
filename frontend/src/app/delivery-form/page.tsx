@@ -8,7 +8,6 @@ import { Button } from '../../components/core/Button';
 import Assessment from './Assessment';
 import Submit from './Submit';
 import Confirmation from './Confirmation';
-import { API_BASE_URL } from '../globals';
 
 export default function DeliveryReportForm() {
     const [formPage, setFormPage] = useState('Client');
@@ -42,42 +41,42 @@ export default function DeliveryReportForm() {
     const [updated, setUpdated] = useState(false);
     const [submitted, setSubmitted] = useState(false);
 
-    const [orderId, setOrderId] = useState(null);
-    const [volunteerId, setVolunteerId] = useState(null);
+    // const [orderId, setOrderId] = useState(null);
+    // const [volunteerId, setVolunteerId] = useState(null);
 
-    const fetchOrderId = async () => {
-        try {
-            const response = await fetch(`${API_BASE_URL}/orders/all`);
-            if (response.ok) {
-                const orders = await response.json();
+    // const fetchOrderId = async () => {
+    //     try {
+    //         const response = await fetch(`${API_BASE_URL}/orders/all`);
+    //         if (response.ok) {
+    //             const orders = await response.json();
 
-                return orders[0]._id;
-            } else {
-                console.error('Failed to fetch orders');
-                return null;
-            }
-        } catch (error) {
-            console.error('Error fetching orders:', error);
-            return null;
-        }
-    };
+    //             return orders[0]._id;
+    //         } else {
+    //             console.error('Failed to fetch orders');
+    //             return null;
+    //         }
+    //     } catch (error) {
+    //         console.error('Error fetching orders:', error);
+    //         return null;
+    //     }
+    // };
 
-    const fetchVolunteerId = async () => {
-        try {
-            const response = await fetch(`${API_BASE_URL}/volunteers`);
-            if (response.ok) {
-                const volunteers = await response.json();
+    // const fetchVolunteerId = async () => {
+    //     try {
+    //         const response = await fetch(`${API_BASE_URL}/volunteers`);
+    //         if (response.ok) {
+    //             const volunteers = await response.json();
 
-                return volunteers[0]._id;
-            } else {
-                console.error('Failed to fetch volunteers');
-                return null;
-            }
-        } catch (error) {
-            console.error('Error fetching volunteers:', error);
-            return null;
-        }
-    };
+    //             return volunteers[0]._id;
+    //         } else {
+    //             console.error('Failed to fetch volunteers');
+    //             return null;
+    //         }
+    //     } catch (error) {
+    //         console.error('Error fetching volunteers:', error);
+    //         return null;
+    //     }
+    // };
 
     const handleAddDeliveryReport = async () => {
         const deliveryReportData = {
@@ -104,8 +103,8 @@ export default function DeliveryReportForm() {
             name: name,
             updated: updated,
             selectedDate: selectedDate,
-            orderId: orderId,
-            volunteerId: volunteerId,
+            // orderId: orderId,
+            // volunteerId: volunteerId,
         };
 
         // Conditionally add pet 2
@@ -126,13 +125,16 @@ export default function DeliveryReportForm() {
         }
 
         try {
-            const response = await fetch(`${API_BASE_URL}/deliveries`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(deliveryReportData),
-            });
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_API_BASE_URL}/deliveries`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(deliveryReportData),
+                }
+            );
 
             if (response.ok) {
                 const data = await response.json();
@@ -149,19 +151,19 @@ export default function DeliveryReportForm() {
         }
     };
 
-    useEffect(() => {
-        const fetchOrder = async () => {
-            const id = await fetchOrderId();
-            setOrderId(id);
-        };
-        fetchOrder();
+    // useEffect(() => {
+    //     const fetchOrder = async () => {
+    //         const id = await fetchOrderId();
+    //         setOrderId(id);
+    //     };
+    //     fetchOrder();
 
-        const fetchVolunteer = async () => {
-            const id = await fetchVolunteerId();
-            setVolunteerId(id);
-        };
-        fetchVolunteer();
-    }, []);
+    //     const fetchVolunteer = async () => {
+    //         const id = await fetchVolunteerId();
+    //         setVolunteerId(id);
+    //     };
+    //     fetchVolunteer();
+    // }, []);
 
     useEffect(() => {
         if (formPage == 'Confirm') {
@@ -184,6 +186,7 @@ export default function DeliveryReportForm() {
                                     formPage == 'Client' &&
                                     'font-bold text-secondary'
                                 }`}
+                                onClick={() => setFormPage('Client')}
                             >
                                 Client
                             </button>
@@ -192,6 +195,7 @@ export default function DeliveryReportForm() {
                                     formPage == 'Pet1' &&
                                     'font-bold text-secondary'
                                 }`}
+                                onClick={() => setFormPage('Pet1')}
                             >
                                 Pet 1
                             </button>
@@ -200,6 +204,7 @@ export default function DeliveryReportForm() {
                                     formPage == 'Pet2' &&
                                     'font-bold text-secondary'
                                 }`}
+                                onClick={() => setFormPage('Pet2')}
                             >
                                 Pet 2
                             </button>
@@ -208,6 +213,7 @@ export default function DeliveryReportForm() {
                                     formPage == 'Pet3' &&
                                     'font-bold text-secondary'
                                 }`}
+                                onClick={() => setFormPage('Pet3')}
                             >
                                 Pet 3
                             </button>
@@ -216,6 +222,7 @@ export default function DeliveryReportForm() {
                                     formPage == 'Assessment' &&
                                     'font-bold text-secondary'
                                 }`}
+                                onClick={() => setFormPage('Assessment')}
                             >
                                 Needs Assessment
                             </button>
@@ -224,6 +231,7 @@ export default function DeliveryReportForm() {
                                     formPage == 'Submit' &&
                                     'font-bold text-secondary'
                                 }`}
+                                onClick={() => setFormPage('Submit')}
                             >
                                 Submit
                             </button>

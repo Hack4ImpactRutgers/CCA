@@ -17,6 +17,7 @@ export const Navbar: FC = () => {
             }/auth/${accountType.toLowerCase()}/logout`,
             {
                 method: 'POST',
+                credentials: 'include',
             }
         )
             .then((res) => {
@@ -37,9 +38,11 @@ export const Navbar: FC = () => {
                 {accountType === 'ADMIN' && (
                     <>
                         <Link
-                            href="/form"
+                            href="/client-form"
                             className={`transition-colors ${
-                                pathname === '/volunteer' ? 'text-primary' : ''
+                                pathname === '/client-form'
+                                    ? 'text-primary'
+                                    : ''
                             }`}
                         >
                             Form
@@ -47,7 +50,9 @@ export const Navbar: FC = () => {
                         <Link
                             href="/client-dashboard"
                             className={`transition-colors ${
-                                pathname === '/client' ? 'text-primary' : ''
+                                pathname === '/client-dashboard'
+                                    ? 'text-primary'
+                                    : ''
                             }`}
                         >
                             Client Dashboard
@@ -55,12 +60,20 @@ export const Navbar: FC = () => {
                         <Link
                             href="/reports"
                             className={`transition-colors ${
-                                pathname === '/contact' ? 'text-primary' : ''
+                                pathname === '/reports' ? 'text-primary' : ''
                             }`}
                         >
                             Reports
                         </Link>
                     </>
+                )}
+                {accountType === 'VOLUNTEER' && (
+                    <Link
+                        href="/delivery-form"
+                        className={`transition-colors ${
+                            pathname === '/delivery-form' ? 'text-primary' : ''
+                        }`}
+                    />
                 )}
             </div>
             <div>
