@@ -2,18 +2,10 @@
 import { useEffect, useState, useRef, MouseEvent } from 'react';
 import ChartJS from 'chart.js/auto';
 import { calcAllLbsPerBrand, calculateLbsPerBrand } from './Dashboard';
-import fetchClientById from './Dashboard';
-import fetchOrderByLocation from './Dashboard';
-import fetchOrderByBrand from './Dashboard';
-import fetchOrderByDate from './Dashboard';
 import { Button } from '@/components/core/Button';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import html2canvas from 'html2canvas';
-
-import getSelectedLocation from './Dashboard';
-
-//import 'chartjs-adapter-date-fns'; // Import adapter for date formatting (optional)
 
 interface PieChartData {
     labels: string[];

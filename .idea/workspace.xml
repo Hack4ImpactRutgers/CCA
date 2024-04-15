@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63abdba7-266c-46a5-96d5-912a95078c1f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/reports/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/reports/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +101,15 @@
       <workItem from="1712698323154" duration="613000" />
       <workItem from="1712704415592" duration="45000" />
       <workItem from="1712870210751" duration="1183000" />
-      <workItem from="1712873643167" duration="3560000" />
+      <workItem from="1712873643167" duration="5431000" />
+      <workItem from="1712896935530" duration="1321000" />
+      <workItem from="1712963489683" duration="602000" />
+      <workItem from="1712964990501" duration="1300000" />
+      <workItem from="1712984058963" duration="598000" />
+      <workItem from="1713022441785" duration="1574000" />
+      <workItem from="1713050511493" duration="647000" />
+      <workItem from="1713113951150" duration="839000" />
+      <workItem from="1713141086523" duration="3961000" />
     </task>
     <servers />
   </component>

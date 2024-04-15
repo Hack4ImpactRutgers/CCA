@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { API_BASE_URL } from '../globals';
 import Loading from '@/components/core/Loading';
 import { ClientDetailsPopup } from '@/components/client-dashboard/ClientDetailsPopup/ClientDetailsPopup';
 import { Client } from '@/types/backend';
@@ -15,14 +14,18 @@ export default function Dashboard() {
     const [sortBy, setSortBy] = useState<string>('default');
 
     useEffect(() => {
-        fetch(API_BASE_URL + '/client/all')
+        fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/client/all', {
+            credentials: 'include',
+        })
             .then((response) => response.json())
             .then((data) => {
                 setData(data);
                 setFilteredData(data);
             });
 
-        fetch(API_BASE_URL + '/orders/all')
+        fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/orders/all', {
+            credentials: 'include',
+        })
             .then((response) => response.json())
             .then((data) => {
                 setOrders(data);
@@ -93,7 +96,7 @@ export default function Dashboard() {
                         new Date(b.deliverBy).getTime() -
                         new Date(a.deliverBy).getTime()
                 )[0];
-                return aLatestOrder.status.localeCompare(bLatestOrder.status);
+                return aLatestOrder.status.localeCompare(bLatestOrder?.status);
             });
         } else if (sortBy === 'clientDetails') {
             result.sort((a: any, b: any) => {
@@ -112,13 +115,17 @@ export default function Dashboard() {
 
     const onPopupClose = () => setSelectedClient(null);
     const onPopupSubmit = (updatedClient: Client) => {
-        fetch(API_BASE_URL + `/client/${updatedClient.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updatedClient),
-        })
+        fetch(
+            process.env.NEXT_PUBLIC_API_BASE_URL +
+                `/client/${updatedClient.id}`,
+            {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedClient),
+            }
+        )
             .then((response) => response.json())
             .then((respdata) => {
                 if (respdata.error) {
@@ -145,7 +152,7 @@ export default function Dashboard() {
             data
                 .map((row: any) => row['pets'])
                 .flat()
-                .map((pet: any) => toTitleCase(pet['animal']))
+                .map((pet: any) => toTitleCase(pet['animal']) ?? '')
                 .sort()
         )
     );
@@ -257,12 +264,12 @@ export default function Dashboard() {
                                 <td
                                     className="cursor-help rounded-md bg-[#F5F5F5] px-3 py-1 text-center"
                                     title={`Created: ${new Date(
-                                        latestOrder.createdOn
+                                        latestOrder?.createdOn
                                     ).toLocaleString()}\nDelivery By: ${new Date(
-                                        latestOrder.deliverBy
+                                        latestOrder?.deliverBy
                                     ).toLocaleString()}`}
                                 >
-                                    {toTitleCase(latestOrder.status)}
+                                    {toTitleCase(latestOrder?.status ?? '')}
                                 </td>
                                 <td
                                     className={`rounded-md bg-[#F5F5F5] px-3 py-1 text-center text-[16px] font-bold text-white hover:cursor-pointer ${

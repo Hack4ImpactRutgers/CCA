@@ -2,31 +2,6 @@
 import { MouseEvent, useEffect, useState } from 'react';
 import Chart from './Chart';
 import { Button } from '@/components/core/Button';
-//import Client from '../../../../backend/schemas/client_schema';
-import { Server } from 'http';
-//import { Request, Response, NextFunction } from 'express';
-//import Volunteer from '../volunteer/page'
-//import { ______ } from "../backend/routes/order_route.ts";
-//import orderModel from '../../../../backend/schemas/order_schema';
-
-//const response = await request(server).get(`/admin/${adminId}`);
-
-/**
- TO DO:
- - only have ACTIVE pets
- - filters
- - order's client's location
- - look at each order's client and filter by their location
- - order's brands
- - look at the chosen brand and display the weight only for that
- - look at each order's brands and sort the weight and brand for each
- - order's dates
- - take the chosen date and compare its month and year to the
- data's month and year
- - look at each order's dates and
- */
-
-//co nsole.log("month:" + new Date("2016-09-23T12:00:00Z").getMonth());
 
 export function getWeightsByLocation(
     orderData: any[],
@@ -909,7 +884,7 @@ export default function Dashboard() {
     ];
 
     useEffect(() => {
-        fetch(API_BASE_URL + '/orders/all', {
+        fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/orders/all', {
             credentials: 'include',
         })
             .then((response) => response.json())

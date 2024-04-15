@@ -8,7 +8,6 @@ import { Button } from '../../components/core/Button';
 import Assessment from './Assessment';
 import Submit from './Submit';
 import Confirmation from './Confirmation';
-import { API_BASE_URL } from '../globals';
 
 export default function DeliveryReportForm() {
     const [formPage, setFormPage] = useState('Client');
@@ -126,13 +125,16 @@ export default function DeliveryReportForm() {
         }
 
         try {
-            const response = await fetch(`${API_BASE_URL}/deliveries`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(deliveryReportData),
-            });
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_API_BASE_URL}/deliveries`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(deliveryReportData),
+                }
+            );
 
             if (response.ok) {
                 const data = await response.json();
@@ -183,7 +185,8 @@ export default function DeliveryReportForm() {
                                 className={`text-left ${
                                     formPage == 'Client' &&
                                     'font-bold text-secondary'
-                                }`}onClick={() => setFormPage('Client')}
+                                }`}
+                                onClick={() => setFormPage('Client')}
                             >
                                 Client
                             </button>
@@ -191,7 +194,8 @@ export default function DeliveryReportForm() {
                                 className={`text-left ${
                                     formPage == 'Pet1' &&
                                     'font-bold text-secondary'
-                                }`}onClick={() => setFormPage('Pet1')}
+                                }`}
+                                onClick={() => setFormPage('Pet1')}
                             >
                                 Pet 1
                             </button>
@@ -199,7 +203,8 @@ export default function DeliveryReportForm() {
                                 className={`text-left ${
                                     formPage == 'Pet2' &&
                                     'font-bold text-secondary'
-                                }`}onClick={() => setFormPage('Pet2')}
+                                }`}
+                                onClick={() => setFormPage('Pet2')}
                             >
                                 Pet 2
                             </button>
@@ -207,7 +212,8 @@ export default function DeliveryReportForm() {
                                 className={`text-left ${
                                     formPage == 'Pet3' &&
                                     'font-bold text-secondary'
-                                }`}onClick={() => setFormPage('Pet3')}
+                                }`}
+                                onClick={() => setFormPage('Pet3')}
                             >
                                 Pet 3
                             </button>
@@ -215,7 +221,8 @@ export default function DeliveryReportForm() {
                                 className={`text-left ${
                                     formPage == 'Assessment' &&
                                     'font-bold text-secondary'
-                                }`}onClick={() => setFormPage('Assessment')}
+                                }`}
+                                onClick={() => setFormPage('Assessment')}
                             >
                                 Needs Assessment
                             </button>
@@ -223,7 +230,8 @@ export default function DeliveryReportForm() {
                                 className={`text-left ${
                                     formPage == 'Submit' &&
                                     'font-bold text-secondary'
-                                }`}onClick={() => setFormPage('Submit')}
+                                }`}
+                                onClick={() => setFormPage('Submit')}
                             >
                                 Submit
                             </button>
