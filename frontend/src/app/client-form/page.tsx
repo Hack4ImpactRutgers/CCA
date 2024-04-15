@@ -105,14 +105,13 @@ export default function InformationForm() {
                         kind: eats1,
                         lbs: weight1,
                     },
-                    
+
                     name: petName1,
                     age: age1,
                     description: `Color: ${color1}, Breed: ${breed1}, Age: ${age1}, How long owned: ${howLong1}, Time spent per day: ${spendTime1}, Medications: ${medications1}, Health condition: ${health1}, Extra notes: ${extra1}, Flea: ${flea1}, Heartworm: ${heartworm1}, Vaccinated: ${vaccinated1}, Sprayed: ${sprayed1}, Take: ${take1}`,
                     weight: weight1,
                     diet: eats1,
                 },
-                
             ],
             needsUpdate: false,
         };
