@@ -41,29 +41,70 @@ export default function DeliveryReportForm() {
     const [updated, setUpdated] = useState(false);
     const [submitted, setSubmitted] = useState(false);
 
-    // const [orderId, setOrderId] = useState(null);
+    const [orderId, setOrderId] = useState(null);
     // const [volunteerId, setVolunteerId] = useState(null);
 
-    // const fetchOrderId = async () => {
-    //     try {
-    //         const response = await fetch(`${API_BASE_URL}/orders/all`);
-    //         if (response.ok) {
-    //             const orders = await response.json();
+    const fetchOrderId = async () => {
+        try {
+            // Fetch all clients
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_API_BASE_URL}/clients/all`,
+                {
+                    credentials: 'include', // Include credentials
+                }
+            );
 
-    //             return orders[0]._id;
-    //         } else {
-    //             console.error('Failed to fetch orders');
-    //             return null;
-    //         }
-    //     } catch (error) {
-    //         console.error('Error fetching orders:', error);
-    //         return null;
-    //     }
-    // };
+            if (!response.ok) {
+                console.error('Failed to fetch clients');
+                return null;
+            }
+
+            const clients = await response.json();
+
+            // Find the client with the given name
+            const client = clients.find(
+                (client: { name: string }) =>
+                    client.name === `${firstName} ${lastName}`
+            );
+
+            if (!client) {
+                console.error('Client not found');
+                return null;
+            }
+
+            // Fetch all orders with credentials included
+            const orderResponse = await fetch(
+                `${process.env.NEXT_PUBLIC_API_BASE_URL}/orders/all`,
+                {
+                    credentials: 'include', // Include credentials
+                }
+            );
+
+            if (!orderResponse.ok) {
+                console.error('Failed to fetch orders');
+                return null;
+            }
+
+            const orders = await orderResponse.json();
+            const order = orders.find(
+                (order: { client: any }) => order.client === client._id
+            );
+
+            if (!order) {
+                console.error('Order not found for the client');
+                return null;
+            }
+
+            return order._id;
+        } catch (error) {
+            console.error('Error fetching order:', error);
+            return null;
+        }
+    };
 
     // const fetchVolunteerId = async () => {
     //     try {
-    //         const response = await fetch(`${API_BASE_URL}/volunteers`);
+    //         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/volunteers`);
     //         if (response.ok) {
     //             const volunteers = await response.json();
 
@@ -103,7 +144,7 @@ export default function DeliveryReportForm() {
             name: name,
             updated: updated,
             selectedDate: selectedDate,
-            // orderId: orderId,
+            orderId: orderId,
             // volunteerId: volunteerId,
         };
 
@@ -152,19 +193,19 @@ export default function DeliveryReportForm() {
         }
     };
 
-    // useEffect(() => {
-    //     const fetchOrder = async () => {
-    //         const id = await fetchOrderId();
-    //         setOrderId(id);
-    //     };
-    //     fetchOrder();
+    useEffect(() => {
+        const fetchOrder = async () => {
+            const id = await fetchOrderId();
+            setOrderId(id);
+        };
+        fetchOrder();
 
-    //     const fetchVolunteer = async () => {
-    //         const id = await fetchVolunteerId();
-    //         setVolunteerId(id);
-    //     };
-    //     fetchVolunteer();
-    // }, []);
+        // const fetchVolunteer = async () => {
+        //     const id = await fetchVolunteerId();
+        //     setVolunteerId(id);
+        // };
+        // fetchVolunteer();
+    }, []);
 
     useEffect(() => {
         if (formPage == 'Confirm') {
