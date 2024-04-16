@@ -21,7 +21,10 @@ export default function Page() {
             },
         })
             .then((res) => res.json())
-            .then(setClients);
+            .then((clients) => {
+                setClients(clients);
+                setClientId(clients[0]._id);
+            });
     }, [accessToken]);
 
     const onSubmit = () => {
