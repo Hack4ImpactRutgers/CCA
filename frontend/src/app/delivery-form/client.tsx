@@ -4,6 +4,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Button } from '../../components/core/Button';
 import { TextInput } from '../../components/core/TextInput';
 import { useUserContext } from '@/context/userContext';
+import client from '@/app/client-form/Client';
 
 interface ClientProps {
     first: string;
@@ -22,27 +23,51 @@ interface ClientProps {
     setPhone: Dispatch<SetStateAction<string>>;
     setInstructions: Dispatch<SetStateAction<string>>;
     setFormPage: Dispatch<SetStateAction<string>>;
+    setOrderId: Dispatch<SetStateAction<string>>;
 }
 
 function Client(props: ClientProps) {
-
-    const { accessToken } = useUserContext(); 
+    const { accessToken } = useUserContext();
     let [clients, setClients] = useState<any[]>([]);
     let [orders, setOrders] = useState<any[]>([]);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/client/all`, {
+    useEffect(() => {
+        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/client/all`, {
+            credentials: 'include',
             headers: {
-                'cca-auth-token': accessToken
-            }
+                'cca-auth-token': accessToken,
+            },
         })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data);
-            setClients(data);
-        })
-    },[accessToken]);
+            .then((res) => res.json())
+            .then(setClients)
+            .then(() => {
+                return fetch(
+                    `${process.env.NEXT_PUBLIC_API_BASE_URL}/orders/all`,
+                    {
+                        credentials: 'include',
+                        headers: {
+                            'cca-auth-token': accessToken,
+                        },
+                    }
+                );
+            })
+            .then((res) => res.json())
+            .then((orders) => {
+                setOrders(orders);
+            });
+    }, [accessToken]);
+
+    useEffect(() => {
+        const client = clients?.filter((client) => {
+            return (
+                orders?.find((order: any) => order.client === client._id) !==
+                undefined
+            );
+        })[0];
+
+        const order = orders.find((order) => order.client === client._id);
+        props.setOrderId(order?._id);
+    }, [clients, orders]);
 
     return (
         <form className="">
@@ -70,18 +95,36 @@ function Client(props: ClientProps) {
                 Clients
             </div>
             <div className="flex flex-col">
-                <select onChange={(event)=>{
-                    props.setClientId(event.target.value);
-
-                }} name="" id="">
-                    {clients.map((client) => {
-                        return (
-                            <option key={client._id} value={client._id}>{client.name}</option>
+                <select
+                    onChange={(event) => {
+                        props.setClientId(event.target.value);
+                        props.setOrderId(
+                            orders?.find(
+                                (order: any) =>
+                                    order.client === event.target.value
+                            )._id ?? 'DOESNT WORK'
                         );
-                    })}
+                    }}
+                    name=""
+                    id=""
+                >
+                    {clients
+                        ?.filter((client) => {
+                            return (
+                                orders?.find(
+                                    (order: any) => order.client === client._id
+                                ) !== undefined
+                            );
+                        })
+                        ?.map((client) => {
+                            return (
+                                <option key={client._id} value={client._id}>
+                                    {client.name}
+                                </option>
+                            );
+                        })}
                 </select>
             </div>
-
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
                 Street Address

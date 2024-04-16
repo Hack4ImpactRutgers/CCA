@@ -42,7 +42,7 @@ export default function DeliveryReportForm() {
     const [updated, setUpdated] = useState(false);
     const [submitted, setSubmitted] = useState(false);
 
-    const [orderId, setOrderId] = useState(null);
+    const [orderId, setOrderId] = useState('');
     const [clientId, setClientId] = useState<any>(null);
     // const [volunteerId, setVolunteerId] = useState(null);
 
@@ -112,23 +112,6 @@ export default function DeliveryReportForm() {
         }
     };
 
-    // const fetchVolunteerId = async () => {
-    //     try {
-    //         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/volunteers`);
-    //         if (response.ok) {
-    //             const volunteers = await response.json();
-
-    //             return volunteers[0]._id;
-    //         } else {
-    //             console.error('Failed to fetch volunteers');
-    //             return null;
-    //         }
-    //     } catch (error) {
-    //         console.error('Error fetching volunteers:', error);
-    //         return null;
-    //     }
-    // };
-
     const handleAddDeliveryReport = async () => {
         const deliveryReportData = {
             firstName: firstName,
@@ -142,7 +125,7 @@ export default function DeliveryReportForm() {
                 {
                     petName: petName1,
                     foodType: foodType1,
-                    foodAmount: foodAmount1,
+                    foodAmount: parseInt(foodAmount1),
                 },
             ],
             lasting: lasting,
@@ -154,16 +137,16 @@ export default function DeliveryReportForm() {
             name: name,
             updated: updated,
             selectedDate: selectedDate,
-            order: orderId,
+            orderId,
             // volunteerId: volunteerId,
         };
-        
+
         // Conditionally add pet 2
         if (petName2.trim() !== '') {
             deliveryReportData.pets.push({
                 petName: petName2,
                 foodType: foodType2,
-                foodAmount: foodAmount2,
+                foodAmount: parseInt(foodAmount2),
             });
         }
 
@@ -171,7 +154,7 @@ export default function DeliveryReportForm() {
             deliveryReportData.pets.push({
                 petName: petName3,
                 foodType: foodType3,
-                foodAmount: foodAmount3,
+                foodAmount: parseInt(foodAmount3),
             });
         }
 
@@ -207,7 +190,7 @@ export default function DeliveryReportForm() {
     useEffect(() => {
         const fetchOrder = async () => {
             const id = await fetchOrderId();
-            setOrderId(id);
+            // setOrderId(id);
         };
         fetchOrder();
 
@@ -308,6 +291,7 @@ export default function DeliveryReportForm() {
                                     setInstructions={setInstructions}
                                     setFormPage={setFormPage}
                                     setClientId={setClientId}
+                                    setOrderId={setOrderId}
                                 />
                             )}
                             {formPage == 'Pet1' && (
