@@ -51,7 +51,7 @@ export default function DeliveryReportForm() {
         try {
             // Fetch all clients
             const response = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/clients/all`,
+                `${process.env.NEXT_PUBLIC_API_BASE_URL}/client/all`,
                 {
                     credentials: 'include', // Include credentials
                     headers: {
