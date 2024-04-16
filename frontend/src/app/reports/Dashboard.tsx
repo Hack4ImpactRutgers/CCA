@@ -2,6 +2,7 @@
 import { MouseEvent, useEffect, useState } from 'react';
 import Chart from './Chart';
 import { Button } from '@/components/core/Button';
+import { useUserContext } from '@/context/userContext';
 
 export function getWeightsByLocation(
     orderData: any[],
@@ -232,6 +233,7 @@ export default function Dashboard() {
     const [selectedLocation, setSelectedLocation] =
         useState<any>('All Locations');
     const [previousOrderData, setPreviousOrderData] = useState<any[]>([]);
+    const { accessToken } = useUserContext();
 
     const FAKE_ORDER_DATA = [
         {
@@ -886,6 +888,9 @@ export default function Dashboard() {
     useEffect(() => {
         fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/orders/all', {
             credentials: 'include',
+            headers: {
+                'cca-auth-token': accessToken,
+            },
         })
             .then((response) => response.json())
             .then((orderData) => {
