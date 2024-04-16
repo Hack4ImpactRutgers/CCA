@@ -8,6 +8,7 @@ import { Button } from '../../components/core/Button';
 import Assessment from './Assessment';
 import Submit from './Submit';
 import Confirmation from './Confirmation';
+import { useUserContext } from '@/context/userContext';
 
 export default function DeliveryReportForm() {
     const [formPage, setFormPage] = useState('Client');
@@ -44,6 +45,8 @@ export default function DeliveryReportForm() {
     const [orderId, setOrderId] = useState(null);
     // const [volunteerId, setVolunteerId] = useState(null);
 
+    const { accessToken } = useUserContext();
+
     const fetchOrderId = async () => {
         try {
             // Fetch all clients
@@ -51,6 +54,9 @@ export default function DeliveryReportForm() {
                 `${process.env.NEXT_PUBLIC_API_BASE_URL}/clients/all`,
                 {
                     credentials: 'include', // Include credentials
+                    headers: {
+                        'cca-auth-token': accessToken,
+                    },
                 }
             );
 
@@ -77,6 +83,9 @@ export default function DeliveryReportForm() {
                 `${process.env.NEXT_PUBLIC_API_BASE_URL}/orders/all`,
                 {
                     credentials: 'include', // Include credentials
+                    headers: {
+                        'cca-auth-token': accessToken,
+                    },
                 }
             );
 
@@ -172,6 +181,7 @@ export default function DeliveryReportForm() {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'cca-auth-token': accessToken,
                     },
                     credentials: 'include',
                     body: JSON.stringify(deliveryReportData),

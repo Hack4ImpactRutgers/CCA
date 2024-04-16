@@ -7,6 +7,7 @@ import Pet from './Pet';
 import { Button } from '../../components/core/Button';
 import Information from './Information';
 import Confirmation from './Confirmation';
+import { useUserContext } from '@/context/userContext';
 
 export default function InformationForm() {
     const [formPage, setFormPage] = useState('Client');
@@ -84,6 +85,8 @@ export default function InformationForm() {
     const [flea3, setFlea3] = useState(false);
     const [take3, setTake3] = useState(false);
 
+    const { accessToken } = useUserContext();
+
     const handleAddClient = async () => {
         const clientData = {
             name: firstName + ' ' + lastName,
@@ -157,6 +160,7 @@ export default function InformationForm() {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'cca-auth-token': accessToken,
                     },
                     credentials: 'include',
                     body: JSON.stringify(clientData),
