@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Loading from '@/components/core/Loading';
 import { ClientDetailsPopup } from '@/components/client-dashboard/ClientDetailsPopup/ClientDetailsPopup';
 import { Client } from '@/types/backend';
+import { useUserContext } from '@/context/userContext';
 
 export default function Dashboard() {
     const [query, setQuery] = useState<string>(''); // Search query
@@ -12,10 +13,12 @@ export default function Dashboard() {
     const [orders, setOrders] = useState<any>([]);
     const [filter, setFilter] = useState<string>('all');
     const [sortBy, setSortBy] = useState<string>('default');
+    const { accessToken } = useUserContext();
 
     useEffect(() => {
         fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/client/all', {
             credentials: 'include',
+            body: JSON.stringify({ token: accessToken }),
         })
             .then((response) => response.json())
             .then((data) => {
@@ -25,12 +28,13 @@ export default function Dashboard() {
 
         fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/orders/all', {
             credentials: 'include',
+            body: JSON.stringify({ token: accessToken }),
         })
             .then((response) => response.json())
             .then((data) => {
                 setOrders(data);
             });
-    }, []);
+    }, [accessToken]);
 
     // Effect to filter data whenever the search query changes
     useEffect(() => {
@@ -123,7 +127,7 @@ export default function Dashboard() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(updatedClient),
+                body: JSON.stringify({ ...updatedClient, token: accessToken }),
             }
         )
             .then((response) => response.json())

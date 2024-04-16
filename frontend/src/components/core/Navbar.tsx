@@ -7,7 +7,7 @@ import { useUserContext } from '@/context/userContext';
 
 export const Navbar: FC = () => {
     const pathname = usePathname();
-    const { accountType, setAccountType } = useUserContext();
+    const { accountType, setAccountType, setAccessToken } = useUserContext();
     const router = useRouter();
 
     const logout = () => {
@@ -23,6 +23,7 @@ export const Navbar: FC = () => {
             .then((res) => {
                 if (res.ok) {
                     setAccountType('');
+                    setAccessToken('');
                     router.push('/');
                 }
             })
