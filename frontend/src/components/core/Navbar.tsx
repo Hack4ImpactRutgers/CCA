@@ -74,6 +74,14 @@ export const Navbar: FC = () => {
                         className={`transition-colors ${
                             pathname === '/delivery-form' ? 'text-primary' : ''
                         }`}
+                    ></Link>
+                )}
+                {accountType === 'VOLUNTEER' && (
+                    <Link
+                        href="/delivery-form"
+                        className={`transition-colors ${
+                            pathname === '/delivery-form' ? 'text-primary' : ''
+                        }`}
                     />
                 )}
             </div>
