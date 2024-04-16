@@ -43,6 +43,7 @@ export default function DeliveryReportForm() {
     const [submitted, setSubmitted] = useState(false);
 
     const [orderId, setOrderId] = useState(null);
+    const [clientId, setClientId] = useState<any>(null);
     // const [volunteerId, setVolunteerId] = useState(null);
 
     const { accessToken } = useUserContext();
@@ -153,10 +154,10 @@ export default function DeliveryReportForm() {
             name: name,
             updated: updated,
             selectedDate: selectedDate,
-            orderId: orderId,
+            order: orderId,
             // volunteerId: volunteerId,
         };
-
+        
         // Conditionally add pet 2
         if (petName2.trim() !== '') {
             deliveryReportData.pets.push({
@@ -306,6 +307,7 @@ export default function DeliveryReportForm() {
                                     instructions={instructions}
                                     setInstructions={setInstructions}
                                     setFormPage={setFormPage}
+                                    setClientId={setClientId}
                                 />
                             )}
                             {formPage == 'Pet1' && (
@@ -365,6 +367,7 @@ export default function DeliveryReportForm() {
                                 <Submit
                                     name={name}
                                     setName={setName}
+                                    clientId={clientId}
                                     selectedDate={selectedDate}
                                     setSelectedDate={setSelectedDate}
                                     updated={updated}

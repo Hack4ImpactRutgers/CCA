@@ -3,6 +3,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Button } from '../../components/core/Button';
 import { TextInput } from '../../components/core/TextInput';
+import { useUserContext } from '@/context/userContext';
 
 interface ClientProps {
     first: string;
@@ -13,6 +14,7 @@ interface ClientProps {
     phone: string;
     instructions: string;
     setFirst: Dispatch<SetStateAction<string>>;
+    setClientId: Dispatch<SetStateAction<string>>;
     setLast: Dispatch<SetStateAction<string>>;
     setAddress: Dispatch<SetStateAction<string>>;
     setCity: Dispatch<SetStateAction<string>>;
@@ -23,6 +25,25 @@ interface ClientProps {
 }
 
 function Client(props: ClientProps) {
+
+    const { accessToken } = useUserContext(); 
+    let [clients, setClients] = useState<any[]>([]);
+    let [orders, setOrders] = useState<any[]>([]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(()=>{
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/client/all`, {
+            headers: {
+                'cca-auth-token': accessToken
+            }
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            setClients(data);
+        })
+    },[accessToken]);
+
     return (
         <form className="">
             <div className='after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -44,6 +65,23 @@ function Client(props: ClientProps) {
                     />
                 </div>
             </div>
+
+            <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
+                Clients
+            </div>
+            <div className="flex flex-col">
+                <select onChange={(event)=>{
+                    props.setClientId(event.target.value);
+
+                }} name="" id="">
+                    {clients.map((client) => {
+                        return (
+                            <option key={client._id} value={client._id}>{client.name}</option>
+                        );
+                    })}
+                </select>
+            </div>
+
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
                 Street Address

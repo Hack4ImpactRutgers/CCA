@@ -250,7 +250,7 @@ export default function Dashboard() {
                         const client = row as Client;
                         const clientOrders = orders.filter(
                             (order: any) =>
-                                order.Client._id == (client as any)._id
+                                order.client == (client as any)._id
                         );
                         const clientOrdersSorted = clientOrders.sort(
                             (a: any, b: any) =>

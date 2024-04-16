@@ -8,6 +8,7 @@ import DatePicker from '@/components/core/DatePicker';
 interface SubmitProps {
     name: string;
     updated: boolean;
+    clientId: string;
     selectedDate: Date;
     submitted: boolean;
     setName: Dispatch<SetStateAction<string>>;
