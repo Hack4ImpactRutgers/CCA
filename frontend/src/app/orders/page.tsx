@@ -32,6 +32,7 @@ export default function Page() {
             method: 'POST',
             credentials: 'include',
             headers: {
+                'Content-Type': 'application/json',
                 'cca-auth-token': accessToken,
             },
             body: JSON.stringify({
