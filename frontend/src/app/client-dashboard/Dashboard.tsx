@@ -17,20 +17,22 @@ export default function Dashboard() {
 
     useEffect(() => {
         fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/client/all', {
+            headers: {
+                'cca-auth-token': accessToken,
+            },
             credentials: 'include',
-            body: JSON.stringify({ token: accessToken }),
         })
             .then((response) => response.json())
             .then((data) => {
                 setData(data);
                 setFilteredData(data);
-                console.log('oiajwdawoidawoijawjiodwaiojdoiajwdijoaw');
-            })
-            .catch((err) => console.log('awd', err));
+            });
 
         fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/orders/all', {
+            headers: {
+                'cca-auth-token': accessToken,
+            },
             credentials: 'include',
-            body: JSON.stringify({ token: accessToken }),
         })
             .then((response) => response.json())
             .then((data) => {
@@ -128,8 +130,9 @@ export default function Dashboard() {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
+                    'cca-auth-token': accessToken,
                 },
-                body: JSON.stringify({ ...updatedClient, token: accessToken }),
+                body: JSON.stringify(updatedClient),
             }
         )
             .then((response) => response.json())
