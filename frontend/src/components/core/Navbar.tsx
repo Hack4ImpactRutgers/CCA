@@ -74,7 +74,9 @@ export const Navbar: FC = () => {
                         className={`transition-colors ${
                             pathname === '/delivery-form' ? 'text-primary' : ''
                         }`}
-                    ></Link>
+                    >
+                        Delivery Form
+                    </Link>
                 )}
                 {accountType === 'VOLUNTEER' && (
                     <Link
