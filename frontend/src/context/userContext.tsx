@@ -12,6 +12,8 @@ import {
 interface UserContext {
     accountType: 'ADMIN' | 'VOLUNTEER' | '';
     setAccountType: (accountType: UserContext['accountType']) => void;
+    accessToken: string;
+    setAccessToken: (accessToken: string) => void;
 }
 
 interface UserProviderProps extends PropsWithChildren {}
@@ -26,8 +28,15 @@ export const UserProvider: FC<PropsWithChildren> = ({ children }) => {
               ) as UserContext['accountType'])
             : '';
 
+    const savedAccessToken =
+        typeof window !== 'undefined'
+            ? (localStorage.getItem('accessToken') as string)
+            : '';
+
     const [accountType, setAccountType] =
         useState<UserContext['accountType']>(savedAccountType);
+
+    const [accessToken, setAccessToken] = useState(savedAccessToken);
 
     return (
         <UserContext.Provider
@@ -36,6 +45,11 @@ export const UserProvider: FC<PropsWithChildren> = ({ children }) => {
                 setAccountType: (accountType) => {
                     setAccountType(accountType);
                     localStorage.setItem('accountType', accountType as string);
+                },
+                accessToken,
+                setAccessToken: (accessToken) => {
+                    setAccessToken(accessToken);
+                    localStorage.setItem('accessToken', accessToken);
                 },
             }}
         >

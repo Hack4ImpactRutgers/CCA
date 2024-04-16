@@ -19,7 +19,7 @@ const Page: FC<PageProps> = () => {
     const [loginType, setLoginType] = useState<'ADMIN' | 'VOLUNTEER'>('ADMIN');
     const [sentOTP, setSentOTP] = useState(false);
     const [code, setCode] = useState<string[]>(Array(OTP_CODE_LENGTH).fill(''));
-    const { setAccountType } = useUserContext();
+    const { setAccountType, setAccessToken } = useUserContext();
     const router = useRouter();
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
@@ -40,6 +40,7 @@ const Page: FC<PageProps> = () => {
                 .then((res) => {
                     if (res.ok) {
                         setAccountType('ADMIN');
+                        res.json().then((body) => setAccessToken(body.token));
                         router.push('/');
                     }
                 })
@@ -77,6 +78,7 @@ const Page: FC<PageProps> = () => {
             ).then((res) => {
                 if (res.ok) {
                     setAccountType('VOLUNTEER');
+                    res.json().then((body) => setAccessToken(body.token));
                     router.push('/');
                 }
             });
