@@ -91,7 +91,7 @@ export default function InformationForm() {
         const clientData = {
             name: firstName + ' ' + lastName,
             age: 0,
-            email: null,
+            email: '',
             phone: phone,
             address: address,
             street: address,
