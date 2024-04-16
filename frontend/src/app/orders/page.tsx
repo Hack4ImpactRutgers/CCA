@@ -36,7 +36,8 @@ export default function Page() {
             },
             body: JSON.stringify({
                 client: clientId,
-                foodItem: { brand, weight: parseInt(weight) },
+                brand,
+                weight: parseInt(weight),
             }),
         }).then((res) => {
             if (res.ok) {
