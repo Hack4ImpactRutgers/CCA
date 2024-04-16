@@ -24,7 +24,9 @@ export default function Dashboard() {
             .then((data) => {
                 setData(data);
                 setFilteredData(data);
-            });
+                console.log('oiajwdawoidawoijawjiodwaiojdoiajwdijoaw');
+            })
+            .catch((err) => console.log('awd', err));
 
         fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/orders/all', {
             credentials: 'include',
