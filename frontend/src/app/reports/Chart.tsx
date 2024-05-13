@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState, useRef, MouseEvent } from 'react';
 import ChartJS from 'chart.js/auto';
-import { calcAllLbsPerBrand, calculateLbsPerBrand } from './Dashboard';
+import { calculateLbsPerAnimal } from './Dashboard';
 import { Button } from '@/components/core/Button';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
@@ -37,9 +37,9 @@ const Chart: React.FC<{
         // Extracting data for the chart
         const labels: string[] = data.map((item: any) => item.foodItems.brand);
         const allFoodOrdersData: { [key: string]: number } =
-            calcAllLbsPerBrand(exportable);
+            calculateLbsPerAnimal(exportable);
         const foodOrdersData: { [key: string]: number } =
-            calculateLbsPerBrand(data);
+            calculateLbsPerAnimal(data);
 
         const costs: number[] = data.map((item: any) => item['Total cost ($)']);
         const colors: string[] = [
@@ -48,6 +48,9 @@ const Chart: React.FC<{
             '#A9BCFF',
             '#FFCF33',
             '#92E08B',
+            '#FFCF33',
+            '#A9BCFF',
+            '#FFB7A9'
         ];
         const colors1: string[] = [
             '#fbd4db',
