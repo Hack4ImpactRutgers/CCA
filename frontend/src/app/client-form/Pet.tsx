@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { Button } from '../../components/core/Button';
 import RadioButton from '../../components/core/RadioButton';
 import { TextInput } from '../../components/core/TextInput';
@@ -45,6 +45,8 @@ interface PetProps {
 }
 
 function Pet(props: PetProps) {
+    const [isError, setIsError] = useState(false);
+
     return (
         <form className="">
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -85,6 +87,7 @@ function Pet(props: PetProps) {
                 placeholder={''}
                 onChange={props.setAge}
                 required
+                type="number"
             />
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -95,6 +98,7 @@ function Pet(props: PetProps) {
                 placeholder={''}
                 onChange={props.setWeight}
                 required
+                type="number"
             />
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -267,7 +271,26 @@ function Pet(props: PetProps) {
             <div className="flex flex-row">
                 {
                     <div
-                        onClick={() => props.setFormPage('Confirm')}
+                        onClick={() => {
+                            if (
+                                props.petName === '' ||
+                                props.petType === '' ||
+                                props.breed === '' ||
+                                props.age === '' ||
+                                props.weight === '' ||
+                                props.color === '' ||
+                                props.howLong === '' ||
+                                props.spendTime === '' ||
+                                props.eats === '' ||
+                                props.health === '' ||
+                                props.extra === ''
+                            ) {
+                                setIsError(true);
+                                return;
+                            }
+
+                            props.setFormPage('Confirm');
+                        }}
                         className="mt-5 text-right"
                     >
                         <Button text="Submit" />
@@ -276,7 +299,26 @@ function Pet(props: PetProps) {
 
                 {props.num == 1 && (
                     <div
-                        onClick={() => props.setFormPage('Pet2')}
+                        onClick={() => {
+                            if (
+                                props.petName === '' ||
+                                props.petType === '' ||
+                                props.breed === '' ||
+                                props.age === '' ||
+                                props.weight === '' ||
+                                props.color === '' ||
+                                props.howLong === '' ||
+                                props.spendTime === '' ||
+                                props.eats === '' ||
+                                props.health === '' ||
+                                props.extra === ''
+                            ) {
+                                setIsError(true);
+                                return;
+                            }
+
+                            props.setFormPage('Pet2');
+                        }}
                         className="ml-5 mt-5 text-right"
                     >
                         <Button text="Add Pet" />
@@ -285,13 +327,37 @@ function Pet(props: PetProps) {
 
                 {props.num == 2 && (
                     <div
-                        onClick={() => props.setFormPage('Pet3')}
+                        onClick={() => {
+                            if (
+                                props.petName === '' ||
+                                props.petType === '' ||
+                                props.breed === '' ||
+                                props.age === '' ||
+                                props.weight === '' ||
+                                props.color === '' ||
+                                props.howLong === '' ||
+                                props.spendTime === '' ||
+                                props.eats === '' ||
+                                props.health === '' ||
+                                props.extra === ''
+                            ) {
+                                setIsError(true);
+                                return;
+                            }
+
+                            props.setFormPage('Pet3');
+                        }}
                         className="ml-5 mt-5 text-right"
                     >
                         <Button text="Add Pet " />
                     </div>
                 )}
             </div>
+            {isError && (
+                <div className="text-red-500">
+                    Please fill out all required fields.
+                </div>
+            )}
         </form>
     );
 }

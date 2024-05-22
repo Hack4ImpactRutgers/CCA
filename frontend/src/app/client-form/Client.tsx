@@ -29,6 +29,8 @@ interface ClientProps {
 }
 
 function Client(props: ClientProps) {
+    const [isError, setIsError] = useState(false);
+
     return (
         <form className="">
             <div className='after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -94,6 +96,7 @@ function Client(props: ClientProps) {
                         placeholder={''}
                         onChange={props.setZip}
                         required
+                        type="number"
                     />
                 </div>
             </div>
@@ -106,6 +109,7 @@ function Client(props: ClientProps) {
                 placeholder={''}
                 onChange={props.setPhone}
                 required
+                type="number"
             />
 
             <div className="flex">
@@ -135,11 +139,30 @@ function Client(props: ClientProps) {
                 </div>
             </div>
             <div
-                onClick={() => props.setFormPage('Information')}
+                onClick={() => {
+                    if (
+                        props.first === '' ||
+                        props.site === '' ||
+                        props.address === '' ||
+                        props.city === '' ||
+                        props.zip === '' ||
+                        props.phone === ''
+                    ) {
+                        setIsError(true);
+                        return;
+                    }
+
+                    props.setFormPage('Information');
+                }}
                 className="mt-5 text-right"
             >
                 <Button text="Continue" />
             </div>
+            {isError && (
+                <div className="text-red-500">
+                    Please fill out all required fields.
+                </div>
+            )}
         </form>
     );
 }

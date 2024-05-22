@@ -1,11 +1,17 @@
-import { Dispatch, FC, InputHTMLAttributes, SetStateAction } from 'react';
+import {
+    Dispatch,
+    FC,
+    HTMLInputTypeAttribute,
+    InputHTMLAttributes,
+    SetStateAction,
+} from 'react';
 
 interface TextInputProps {
     value: string;
     onChange: Dispatch<SetStateAction<string>>;
     placeholder: string;
-    type?: 'text' | 'password';
     required?: boolean;
+    type?: HTMLInputTypeAttribute;
 }
 
 /**
@@ -15,8 +21,8 @@ export const TextInput: FC<TextInputProps> = ({
     value,
     onChange,
     placeholder,
-    type = 'text',
     required,
+    type,
 }) => {
     return (
         <input
@@ -24,8 +30,8 @@ export const TextInput: FC<TextInputProps> = ({
             value={value}
             className="h-[49px] w-[395px] rounded-lg border border-tertiary indent-3 font-secondary text-lg font-light text-tertiary placeholder-tertiary focus:outline-none focus:ring focus:ring-primary"
             placeholder={placeholder}
-            type={type}
             required={required}
+            type={type}
         />
     );
 };
