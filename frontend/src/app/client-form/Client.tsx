@@ -1,5 +1,6 @@
 'use client';
 
+import { useUserContext } from '@/context/userContext';
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Button } from '@/components/core/Button';
 import { TextInput } from '@/components/core/TextInput';
@@ -30,6 +31,23 @@ interface ClientProps {
 
 function Client(props: ClientProps) {
     const [isError, setIsError] = useState(false);
+    const [siteLocations, setSiteLocations] = useState<any[]>([]);
+
+    const { accessToken } = useUserContext();
+
+    useEffect(() => {
+        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/site/all`, {
+            credentials: 'include',
+            headers: {
+                'cca-auth-token': accessToken,
+            },
+        })
+            .then((res) => res.json())
+            .then((sites) => {
+                setSiteLocations(sites);
+                props.setSite(sites[0].location);
+            });
+    }, [accessToken, props]);
 
     return (
         <form className="">
@@ -57,12 +75,18 @@ function Client(props: ClientProps) {
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
                 Delivery Site Location
             </div>
-            <TextInput
-                value={props.site || ''}
-                placeholder={''}
-                onChange={props.setSite}
-                required
-            />
+            <select
+                onChange={(e) => props.setSite(e.target.value)}
+                className="w-[395px]"
+            >
+                {siteLocations.map((location) => {
+                    return (
+                        <option key={location._id} value={location._id}>
+                            {location.location}
+                        </option>
+                    );
+                })}
+            </select>
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
                 Street Address
