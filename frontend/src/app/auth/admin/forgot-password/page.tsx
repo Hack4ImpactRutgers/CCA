@@ -1,5 +1,5 @@
 'use client';
-import { FC, FormEventHandler, useEffect, useState } from 'react';
+import { FC, FormEventHandler, Suspense, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { TextInput } from '@/components/core/TextInput';
 import { Button } from '@/components/core/Button';
@@ -11,7 +11,7 @@ import { cookies } from 'next/headers';
 
 interface PageProps {}
 
-const Page: FC<PageProps> = () => {
+function Content() {
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
     const [confirmPasswordInput, setConfirmPasswordInput] = useState('');
@@ -121,6 +121,14 @@ const Page: FC<PageProps> = () => {
                 <Button type="submit" text={'Send Email'} />
             </form>
         </main>
+    );
+}
+
+const Page: FC<PageProps> = () => {
+    return (
+        <Suspense>
+            <Content />
+        </Suspense>
     );
 };
 
