@@ -74,6 +74,14 @@ export const Navbar: FC = () => {
                         >
                             Create Order
                         </Link>
+                        <Link
+                            href="/sites"
+                            className={`transition-colors ${
+                                pathname === '/sites' ? 'text-primary' : ''
+                            }`}
+                        >
+                            Add Site
+                        </Link>
                     </>
                 )}
                 {accountType === 'VOLUNTEER' && (
