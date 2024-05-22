@@ -131,7 +131,7 @@ function Pet(props: PetProps) {
                 required
             />
 
-            <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
+            <div className="mt-5">
                 What does this pet eat? (examples: dry food, can food, table
                 scraps)
             </div>
@@ -139,7 +139,6 @@ function Pet(props: PetProps) {
                 value={props.eats || ''}
                 placeholder={''}
                 onChange={props.setEats}
-                required
             />
 
             <div className='after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -337,7 +336,6 @@ function Pet(props: PetProps) {
                                 props.color === '' ||
                                 props.howLong === '' ||
                                 props.spendTime === '' ||
-                                props.eats === '' ||
                                 props.health === '' ||
                                 props.extra === ''
                             ) {
