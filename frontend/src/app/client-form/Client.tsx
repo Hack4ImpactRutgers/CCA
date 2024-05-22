@@ -1,8 +1,8 @@
 'use client';
 
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { Button } from '../../components/core/Button';
-import { TextInput } from '../../components/core/TextInput';
+import { Button } from '@/components/core/Button';
+import { TextInput } from '@/components/core/TextInput';
 
 interface ClientProps {
     first: string;
@@ -40,6 +40,7 @@ function Client(props: ClientProps) {
                     value={props.first || ''}
                     placeholder={'First Name'}
                     onChange={props.setFirst}
+                    required
                 />
 
                 <div className="ml-5">
@@ -58,6 +59,7 @@ function Client(props: ClientProps) {
                 value={props.site || ''}
                 placeholder={''}
                 onChange={props.setSite}
+                required
             />
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -67,6 +69,7 @@ function Client(props: ClientProps) {
                 value={props.address || ''}
                 placeholder={''}
                 onChange={props.setAddress}
+                required
             />
 
             <div className="flex">
@@ -78,6 +81,7 @@ function Client(props: ClientProps) {
                         value={props.city || ''}
                         placeholder={''}
                         onChange={props.setCity}
+                        required
                     />
                 </div>
 
@@ -89,6 +93,7 @@ function Client(props: ClientProps) {
                         value={props.zip || ''}
                         placeholder={''}
                         onChange={props.setZip}
+                        required
                     />
                 </div>
             </div>
@@ -100,6 +105,7 @@ function Client(props: ClientProps) {
                 value={props.phone || ''}
                 placeholder={''}
                 onChange={props.setPhone}
+                required
             />
 
             <div className="flex">

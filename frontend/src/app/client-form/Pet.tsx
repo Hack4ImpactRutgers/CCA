@@ -54,6 +54,7 @@ function Pet(props: PetProps) {
                 value={props.petName || ''}
                 placeholder={''}
                 onChange={props.setPetName}
+                required
             />
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -63,6 +64,7 @@ function Pet(props: PetProps) {
                 value={props.petType || ''}
                 placeholder={''}
                 onChange={props.setPetType}
+                required
             />
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -72,6 +74,7 @@ function Pet(props: PetProps) {
                 value={props.breed || ''}
                 placeholder={''}
                 onChange={props.setBreed}
+                required
             />
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -81,6 +84,7 @@ function Pet(props: PetProps) {
                 value={props.age || ''}
                 placeholder={''}
                 onChange={props.setAge}
+                required
             />
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -90,6 +94,7 @@ function Pet(props: PetProps) {
                 value={props.weight || ''}
                 placeholder={''}
                 onChange={props.setWeight}
+                required
             />
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -99,6 +104,7 @@ function Pet(props: PetProps) {
                 value={props.color || ''}
                 placeholder={''}
                 onChange={props.setColor}
+                required
             />
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -108,6 +114,7 @@ function Pet(props: PetProps) {
                 value={props.howLong || ''}
                 placeholder={''}
                 onChange={props.setHowLong}
+                required
             />
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -117,6 +124,7 @@ function Pet(props: PetProps) {
                 value={props.spendTime || ''}
                 placeholder={''}
                 onChange={props.setSpendTime}
+                required
             />
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -127,6 +135,7 @@ function Pet(props: PetProps) {
                 value={props.eats || ''}
                 placeholder={''}
                 onChange={props.setEats}
+                required
             />
 
             <div className='after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -243,6 +252,7 @@ function Pet(props: PetProps) {
                 value={props.health || ''}
                 placeholder={''}
                 onChange={props.setHealth}
+                required
             />
 
             <div className='mt-5 after:ml-0.5 after:text-[red] after:content-["*"]'>
@@ -252,6 +262,7 @@ function Pet(props: PetProps) {
                 value={props.extra || ''}
                 placeholder={''}
                 onChange={props.setExtra}
+                required
             />
             <div className="flex flex-row">
                 {
